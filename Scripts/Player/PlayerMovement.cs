@@ -3,11 +3,14 @@ using System;
 
 public partial class PlayerMovement : CharacterBody2D
 {
+	[Export] private PlayerStateHandler _playerStateHandler;
 	[Export] private Sprite2D _sprite;
 	[Export] private float _moveSpeed = 5f;
 	[Export] private float _jumpPower = 120f;
 	[Export] private float _gravity = 5f;
 
+	
+	
 	/*
 	private const float MoveSpeed = 200f;
 	private const float JumpHeight = -500f;
@@ -27,16 +30,19 @@ public partial class PlayerMovement : CharacterBody2D
 			direction += 1;
 			//Velocity = Vector2.Right;
 			Flip(false);
+			_playerStateHandler.HandlePlayerStateChange(PlayerState.Move);
 		}
 		if (Input.IsActionPressed(Constants.Input.MoveLeft))
 		{
 			direction -= 1;
 			//Velocity = Vector2.Left;
 			Flip(true);
+			_playerStateHandler.HandlePlayerStateChange(PlayerState.Move);
 		}
 		if(direction == 0)
 		{
 			_motion.X = 0;
+			_playerStateHandler.HandlePlayerStateChange(PlayerState.Idle);
 		}
 		else
 		{
@@ -45,7 +51,9 @@ public partial class PlayerMovement : CharacterBody2D
 
 		if (Input.IsActionJustPressed(Constants.Input.Jump))
 		{
-			_motion.Y = _jumpPower;
+			GD.Print("Jump!");
+			_motion.Y = -_jumpPower;
+			_playerStateHandler.HandlePlayerStateChange(PlayerState.Jump);
 		}
 
 		_motion.Y += _gravity;

@@ -6,6 +6,7 @@ public class Constants
     {
         public static readonly StringName Idle = new ("Idle");
         public static readonly StringName Move = new ("Move");
+        public static readonly StringName Jump = new ("Jump");
     }
     
     public static class Input
