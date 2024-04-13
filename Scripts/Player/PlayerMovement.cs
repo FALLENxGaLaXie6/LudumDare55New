@@ -4,7 +4,7 @@ using System;
 public partial class PlayerMovement : CharacterBody2D
 {
 	[Export] private PlayerStateHandler _playerStateHandler;
-	[Export] private Sprite2D _sprite;
+	[Export] private AnimatedSprite2D _animatedSprite2D;
 	[Export] private float _moveSpeed = 5f;
 	[Export] private float _jumpPower = 120f;
 	[Export] private float _gravity = 5f;
@@ -30,14 +30,14 @@ public partial class PlayerMovement : CharacterBody2D
 			direction += 1;
 			//Velocity = Vector2.Right;
 			Flip(false);
-			_playerStateHandler.HandlePlayerStateChange(PlayerState.Move);
+			_playerStateHandler.HandlePlayerStateChange(PlayerState.Walk);
 		}
 		if (Input.IsActionPressed(Constants.Input.MoveLeft))
 		{
 			direction -= 1;
 			//Velocity = Vector2.Left;
 			Flip(true);
-			_playerStateHandler.HandlePlayerStateChange(PlayerState.Move);
+			_playerStateHandler.HandlePlayerStateChange(PlayerState.Walk);
 		}
 		if(direction == 0)
 		{
@@ -63,7 +63,7 @@ public partial class PlayerMovement : CharacterBody2D
 		MoveAndSlide();
 	}
 
-	private void Flip(bool flipH) => _sprite.FlipH = flipH;
+	private void Flip(bool flipH) => _animatedSprite2D.FlipH = flipH;
 	
 	/**
 

@@ -5,7 +5,7 @@ public class Constants
     public static class Animation
     {
         public static readonly StringName Idle = new ("Idle");
-        public static readonly StringName Move = new ("Move");
+        public static readonly StringName Walk = new ("Walk");
         public static readonly StringName Jump = new ("Jump");
     }
     
