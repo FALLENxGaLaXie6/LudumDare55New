@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ug5vnqueqory"
-path="res://.godot/imported/blockhead_idle-Sheet.png-0965483f5e2711154b684fffb490a5fa.ctex"
+uid="uid://6rym5sg6rsj1"
+path="res://.godot/imported/blockhead_walk-Sheet.png-7077f9d7392efb438350b7a9c12cb09e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Character/blockhead_idle-Sheet.png"
-dest_files=["res://.godot/imported/blockhead_idle-Sheet.png-0965483f5e2711154b684fffb490a5fa.ctex"]
+source_file="res://Art/Character/blockhead_walk-Sheet.png"
+dest_files=["res://.godot/imported/blockhead_walk-Sheet.png-7077f9d7392efb438350b7a9c12cb09e.ctex"]
 
 [params]
 
