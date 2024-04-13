@@ -3,94 +3,85 @@ using System;
 
 public partial class PlayerMovement : CharacterBody2D
 {
-	[Export] private PlayerStateHandler _playerStateHandler;
+	[Export] private PlayerAnimation _playerAnimation;
 	[Export] private AnimatedSprite2D _animatedSprite2D;
 	[Export] private float _moveSpeed = 5f;
 	[Export] private float _jumpPower = 120f;
-	[Export] private float _gravity = 5f;
 
-	
-	
-	/*
-	private const float MoveSpeed = 200f;
-	private const float JumpHeight = -500f;
-	private const float Gravity = 2000f;
-	private const float MaxFallSpeed = 1000f;
+	[Export] private float _jumpHeight = 100f;
+	[Export] private float _jumpTimeToPeek = 0.5f;
+	[Export] private float _jumpTimeToDescent = 0.4f;
 
-	private Vector2 velocity = new Vector2();
-	private bool isOnGround = false;
-	*/
-	Vector2 _motion = Vector2.Zero;
+	float JumpVelocity => ((2f * _jumpHeight) / _jumpTimeToPeek) * -1f;
+	float jumpGravity => ((-2f * _jumpHeight) / (_jumpTimeToPeek * _jumpTimeToPeek)) * -1f;
+	float fallGravity => ((-2f * _jumpHeight) / (_jumpTimeToDescent * _jumpTimeToDescent)) * -1f;
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		int direction = 0;
-		if (Input.IsActionPressed(Constants.Input.MoveRight))
+		
+		Vector2 newVeclocity = new Vector2(Velocity.X, Velocity.Y);
+
+		newVeclocity.Y += GetGravity() * (float)delta;
+		newVeclocity.X = GetInputVelocity() * _moveSpeed;
+
+		float horizontalDirection = HandleSpriteFlip();
+		Velocity = new Vector2(newVeclocity.X, newVeclocity.Y);
+		HandleJump();
+		MoveAndSlide();
+		
+		UpdateAnimations(horizontalDirection);
+	}
+
+	private void HandleJump()
+	{
+		if (Input.IsActionJustPressed(Constants.Input.Jump) && IsOnFloor())
+			Jump();
+	}
+
+	private float HandleSpriteFlip()
+	{
+		float horizontalDirection = Input.GetAxis(Constants.Input.MoveLeft, Constants.Input.MoveRight);
+		if (horizontalDirection != 0) _animatedSprite2D.FlipH = (horizontalDirection < 0);
+		return horizontalDirection;
+	}
+
+	private float GetInputVelocity()
+	{
+		float horizontal = 0f;
+		if (Input.IsActionPressed(Constants.Input.MoveLeft)) horizontal -= 1;
+		if (Input.IsActionPressed(Constants.Input.MoveRight)) horizontal += 1;
+		
+		return horizontal;
+	}
+	
+	private float GetGravity()
+	{
+		if (Velocity.Y < 0)
+			return jumpGravity;
+		return fallGravity;
+	}
+
+	private void Jump() => Velocity = new Vector2(Velocity.X, JumpVelocity);
+
+	private void UpdateAnimations(float horizontalDirection)
+	{
+		if (IsOnFloor())
 		{
-			direction += 1;
-			//Velocity = Vector2.Right;
-			Flip(false);
-			_playerStateHandler.HandlePlayerStateChange(PlayerState.Walk);
-		}
-		if (Input.IsActionPressed(Constants.Input.MoveLeft))
-		{
-			direction -= 1;
-			//Velocity = Vector2.Left;
-			Flip(true);
-			_playerStateHandler.HandlePlayerStateChange(PlayerState.Walk);
-		}
-		if(direction == 0)
-		{
-			_motion.X = 0;
-			_playerStateHandler.HandlePlayerStateChange(PlayerState.Idle);
+			if (horizontalDirection == 0) _playerAnimation.PlayAnimation(Constants.Animation.Idle);
+			else _playerAnimation.PlayAnimation(Constants.Animation.Walk);
+			
 		}
 		else
 		{
-			_motion.X = direction * _moveSpeed;
-		}
-
-		if (Input.IsActionJustPressed(Constants.Input.Jump))
-		{
-			GD.Print("Jump!");
-			_motion.Y = -_jumpPower;
-			_playerStateHandler.HandlePlayerStateChange(PlayerState.Jump);
-		}
-
-		_motion.Y += _gravity;
-		//Velocity *= _moveSpeed;
-		
-		Velocity = new Vector2(_motion.X, _motion.Y);
-		MoveAndSlide();
-	}
-
-	private void Flip(bool flipH) => _animatedSprite2D.FlipH = flipH;
-	
-	/**
-
-	private void ProcessInput()
-	{
-		velocity.x = Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left");
-		velocity.x *= MoveSpeed;
-
-		if (Input.IsActionJustPressed("jump") && isOnGround)
-		{
-			velocity.y = JumpHeight;
-			isOnGround = false;
+			if (Velocity.Y < 0)
+			{
+				_playerAnimation.PlayAnimation(Constants.Animation.Jump);
+			}
+			else
+			{
+				//TODO: replace with fall animation
+				_playerAnimation.PlayAnimation(Constants.Animation.Jump);
+			}
 		}
 	}
-
-	private void UpdateVelocity(float delta)
-	{
-		if (!isOnGround)
-		{
-			velocity.y += Gravity * delta;
-			velocity.y = Mathf.Clamp(velocity.y, -MaxFallSpeed, Mathf.Infinity);
-		}
-	}
-
-	public void _on_Player_body_entered(object body)
-	{
-		isOnGround = true;
-	}
-	**/
 }

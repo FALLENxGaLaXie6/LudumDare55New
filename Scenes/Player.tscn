@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://cb44ju8x525wn"]
+[gd_scene load_steps=30 format=3 uid="uid://cb44ju8x525wn"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.cs" id="1_p2hra"]
 [ext_resource type="Texture2D" uid="uid://ug5vnqueqory" path="res://Art/Character/blockhead_idle-Sheet.png" id="2_qftnk"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAnimation.cs" id="3_j6tys"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerStateHandler.cs" id="4_1ntla"]
+[ext_resource type="Texture2D" uid="uid://cnmujhjixerwd" path="res://Art/Character/blockhead_jump-Sheet.png" id="5_4hnrx"]
 [ext_resource type="Texture2D" uid="uid://6rym5sg6rsj1" path="res://Art/Character/blockhead_walk-Sheet.png" id="5_8s6y2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isue1"]
@@ -52,6 +53,10 @@ region = Rect2(180, 0, 20, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_t0cmv"]
 atlas = ExtResource("2_qftnk")
 region = Rect2(200, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0w75k"]
+atlas = ExtResource("5_4hnrx")
+region = Rect2(0, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vr2qx"]
 atlas = ExtResource("5_8s6y2")
@@ -105,8 +110,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t0cmv")
 }],
-"loop": true,
+"loop": false,
 "name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0w75k")
+}],
+"loop": true,
+"name": &"Jump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -122,7 +135,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8jpcq")
 }],
-"loop": true,
+"loop": false,
 "name": &"Walk",
 "speed": 5.0
 }]
@@ -189,21 +202,49 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_khhun"]
+resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7s157"]
 _data = {
 "Idle": SubResource("Animation_a3un6"),
+"Jump": SubResource("Animation_khhun"),
 "RESET": SubResource("Animation_a47l3"),
 "Walk": SubResource("Animation_5cico")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_playerStateHandler", "_animatedSprite2D")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_playerStateHandler", "_playerAnimation", "_animatedSprite2D")]
 collision_mask = 2
 script = ExtResource("1_p2hra")
 _playerStateHandler = NodePath("PlayerStateHandler")
+_playerAnimation = NodePath("PlayerAnimationHandler")
 _animatedSprite2D = NodePath("AnimatedSprite2D")
 _moveSpeed = 150.0
-_jumpPower = 400.0
-_gravity = 20.0
+_jumpPower = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
@@ -218,8 +259,9 @@ script = ExtResource("3_j6tys")
 _animationPlayer = NodePath("../AnimatedSprite2D/AnimationPlayer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.996391, 0.995386)
 sprite_frames = SubResource("SpriteFrames_ljcur")
-animation = &"Idle"
+animation = &"Walk"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 root_node = NodePath("../..")

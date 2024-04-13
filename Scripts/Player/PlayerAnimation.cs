@@ -9,19 +9,5 @@ public partial class PlayerAnimation : Node
     [Export] private float _jumpAnimationSpeed = 1f;
 
 
-    public void PlayAnimation(StringName animation)
-    {
-	    switch (PlayerStateHandler.PlayerState)
-	    {
-		    case PlayerState.Idle:
-			    _animationPlayer.Play(Constants.Animation.Idle, _idleAnimationSpeed);
-			    break;
-		    case PlayerState.Walk:
-			    _animationPlayer.Play(Constants.Animation.Walk, _walkAnimationSpeed);
-                break;
-            case PlayerState.Jump:
-	            _animationPlayer.Play(Constants.Animation.Jump, _jumpAnimationSpeed);
-	            break;
-	    }
-    }
+    public void PlayAnimation(StringName animation) => _animationPlayer.Play(animation);
 }
