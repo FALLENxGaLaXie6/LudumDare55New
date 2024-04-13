@@ -2734,7 +2734,8 @@ layer_1/name = "Platforms"
 layer_1/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("4_l2v6p")]
-position = Vector2(63, -93)
+position = Vector2(66, -25)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(263, -172)
+position = Vector2(153, -76)
+zoom = Vector2(4.625, 4.625)
