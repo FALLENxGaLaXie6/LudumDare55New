@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct3xakbyi7c8g"
-path="res://.godot/imported/0_Demons_of_Darkness_Idle_005.png-825423bcdc8fade6f6e4e4f6dba3c5cc.ctex"
+uid="uid://cv1h6rhixjtkh"
+path="res://.godot/imported/tile_map.png-32deaeb2f04aa017e5a0957aa802d1b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/TestCharacter/0_Demons_of_Darkness_Idle_005.png"
-dest_files=["res://.godot/imported/0_Demons_of_Darkness_Idle_005.png-825423bcdc8fade6f6e4e4f6dba3c5cc.ctex"]
+source_file="res://Art/Environment/tile_map.png"
+dest_files=["res://.godot/imported/tile_map.png-32deaeb2f04aa017e5a0957aa802d1b5.ctex"]
 
 [params]
 
