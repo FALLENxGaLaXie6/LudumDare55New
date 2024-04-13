@@ -17,3 +17,8 @@ config/icon="res://Test Stuff/icon.svg"
 [dotnet]
 
 project/assembly_name="Ludum Dare 55 New"
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Environment"
