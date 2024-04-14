@@ -21,6 +21,7 @@ public partial class CameraFollow : Camera2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		//TODO: Potential jittering now, might want to fix this later
 		// Calculate the target position for the camera
 		Vector2 targetPosition = player.GlobalPosition + offset;
 

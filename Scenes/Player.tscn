@@ -243,9 +243,7 @@ _playerAnimation = NodePath("PlayerAnimationHandler")
 _animatedSprite2D = NodePath("AnimatedSprite2D")
 _moveSpeed = 150.0
 _jumpPower = 100.0
-_jumpHeight = 50.0
-_jumpTimeToPeek = 0.7
-_jumpTimeToDescent = 0.3
+_jumpHeight = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
