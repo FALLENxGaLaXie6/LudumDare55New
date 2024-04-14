@@ -6,7 +6,9 @@ public partial class PlayerMovement : CharacterBody2D
 	[Export] private PlayerAnimation _playerAnimation;
 	[Export] private AnimatedSprite2D _animatedSprite2D;
 	[Export] private SummoningCloud _summoningCloud;
-	[Export] private float _moveSpeed = 5f;
+	[Export] private Node2D _summoningCloudNode;
+	[Export] private float _walkSpeed = 5f;
+	[Export] private float _runSpeed = 10f;
 	[Export] private float _jumpPower = 120f;
 
 	[Export] private float _jumpHeight = 100f;
@@ -19,11 +21,15 @@ public partial class PlayerMovement : CharacterBody2D
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		
 		Vector2 newVeclocity = new Vector2(Velocity.X, Velocity.Y);
 
 		newVeclocity.Y += GetGravity() * (float)delta;
-		newVeclocity.X = GetInputVelocity() * _moveSpeed;
+
+		if (Input.IsActionPressed(Constants.Input.Run))
+			newVeclocity.X = GetInputVelocity() * _runSpeed;
+		else 
+			newVeclocity.X = GetInputVelocity() * _walkSpeed;
+		
 
 		float horizontalDirection = HandleSpriteFlip();
 		Velocity = new Vector2(newVeclocity.X, newVeclocity.Y);
@@ -71,13 +77,13 @@ public partial class PlayerMovement : CharacterBody2D
 			if (horizontalDirection == 0 && !SummoningCloud.SummoningCloudActive) _playerAnimation.PlayAnimation(Constants.Animation.Idle);
 			else if (!SummoningCloud.SummoningCloudActive)
 			{
-				_playerAnimation.PlayAnimation(Constants.Animation.Walk);
+				HandleMovementAnimations();
 			}
 
 			if (horizontalDirection != 0 && SummoningCloud.SummoningCloudActive)
 			{
 				SummoningCloud.SummoningCloudActive = false;
-				_playerAnimation.PlayAnimation(Constants.Animation.Walk);
+				HandleMovementAnimations();
 				_summoningCloud.ActivateSummoningCloud(false);
 			}
 		}
@@ -92,6 +98,17 @@ public partial class PlayerMovement : CharacterBody2D
 				//TODO: replace with fall animation
 				_playerAnimation.PlayAnimation(Constants.Animation.Jump);
 			}
+			_summoningCloud.ActivateSummoningCloud(false);
 		}
 	}
+
+	private void HandleMovementAnimations()
+	{
+		if (Input.IsActionPressed(Constants.Input.Run))
+			_playerAnimation.PlayAnimation(Constants.Animation.Run, 2f);
+		else
+			_playerAnimation.PlayAnimation(Constants.Animation.Walk);
+	}
+
+	public void ReassignBubbleParent(Node2D nodeParent) => _summoningCloudNode.Reparent(nodeParent);
 }

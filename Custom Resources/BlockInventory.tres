@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="BlockInventory" load_steps=2 format=3 uid="uid://csa10e2co7uq3"]
+
+[ext_resource type="Script" path="res://Scripts/Helpers/ResourceScripts/BlockInventory.cs" id="1_sefuc"]
+
+[resource]
+script = ExtResource("1_sefuc")

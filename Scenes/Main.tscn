@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://yj28gt3r8lwu"]
+[gd_scene load_steps=12 format=3 uid="uid://yj28gt3r8lwu"]
 
 [ext_resource type="Script" path="res://Scripts/Camera/CameraFollow.cs" id="1_fw2sh"]
+[ext_resource type="Script" path="res://Scripts/Main.cs" id="1_s7h38"]
 [ext_resource type="Texture2D" uid="uid://dvao2tmofbwy7" path="res://Test Stuff/tilemap1.png" id="1_xwe0u"]
 [ext_resource type="PackedScene" uid="uid://cb44ju8x525wn" path="res://Scenes/Player.tscn" id="2_gsx2r"]
 [ext_resource type="Texture2D" uid="uid://cv1h6rhixjtkh" path="res://Art/Environment/tile_map.png" id="2_ouvim"]
 [ext_resource type="PackedScene" uid="uid://dtyha20refwht" path="res://Scenes/big_dude.tscn" id="4_p54d5"]
 [ext_resource type="PackedScene" uid="uid://b2ds6bbdufr81" path="res://Scenes/Blocks/BlockSummoning.tscn" id="6_y7su2"]
+[ext_resource type="AudioStream" uid="uid://ccgssiygyyxe3" path="res://Audio/Music/Secrets.mp3" id="8_j0r5o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5y7cu"]
 texture = ExtResource("1_xwe0u")
@@ -985,7 +987,10 @@ physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_5y7cu")
 sources/2 = SubResource("TileSetAtlasSource_ii0hj")
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("_playerMovement", "_masterSceneNode")]
+script = ExtResource("1_s7h38")
+_playerMovement = NodePath("Player")
+_masterSceneNode = NodePath(".")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(153, -76)
@@ -1009,3 +1014,11 @@ layer_1/tile_data = PackedInt32Array()
 [node name="Big Dude" parent="Background" instance=ExtResource("4_p54d5")]
 
 [node name="Block Summoning" parent="." instance=ExtResource("6_y7su2")]
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_j0r5o")
+volume_db = -7.837
+autoplay = true

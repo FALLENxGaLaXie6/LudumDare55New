@@ -18,8 +18,6 @@ public partial class BlockSummoning : Node2D
 	[Export] private float _previewSpriteScaleAnimationSpeed = 2f;
 	
 	[Export] AnimationPlayer _animationPlayer;
-
-	
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -45,7 +43,7 @@ public partial class BlockSummoning : Node2D
 
 		// Update preview sprite position
 		previewSprite.Position = gridPosition;
-		
+		previewSprite.Visible = SummoningCloud.SummoningCloudActive;
 		// Check if the player wants to place a block
 		if (Input.IsActionJustPressed(Constants.Input.PlaceBlock))
 		{

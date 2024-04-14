@@ -9,5 +9,5 @@ public partial class PlayerAnimation : Node
     [Export] private float _jumpAnimationSpeed = 1f;
 
 
-    public void PlayAnimation(StringName animation) => _animationPlayer.Play(animation);
+    public void PlayAnimation(StringName animation, float speed = 1f) => _animationPlayer.Play(animation, -1D, speed);
 }
