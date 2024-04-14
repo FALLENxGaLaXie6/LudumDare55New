@@ -5,6 +5,7 @@ public partial class PlayerMovement : CharacterBody2D
 {
 	[Export] private PlayerAnimation _playerAnimation;
 	[Export] private AnimatedSprite2D _animatedSprite2D;
+	[Export] private SummoningCloud _summoningCloud;
 	[Export] private float _moveSpeed = 5f;
 	[Export] private float _jumpPower = 120f;
 
@@ -67,9 +68,18 @@ public partial class PlayerMovement : CharacterBody2D
 	{
 		if (IsOnFloor())
 		{
-			if (horizontalDirection == 0) _playerAnimation.PlayAnimation(Constants.Animation.Idle);
-			else _playerAnimation.PlayAnimation(Constants.Animation.Walk);
-			
+			if (horizontalDirection == 0 && !SummoningCloud.SummoningCloudActive) _playerAnimation.PlayAnimation(Constants.Animation.Idle);
+			else if (!SummoningCloud.SummoningCloudActive)
+			{
+				_playerAnimation.PlayAnimation(Constants.Animation.Walk);
+			}
+
+			if (horizontalDirection != 0 && SummoningCloud.SummoningCloudActive)
+			{
+				SummoningCloud.SummoningCloudActive = false;
+				_playerAnimation.PlayAnimation(Constants.Animation.Walk);
+				_summoningCloud.ActivateSummoningCloud(false);
+			}
 		}
 		else
 		{

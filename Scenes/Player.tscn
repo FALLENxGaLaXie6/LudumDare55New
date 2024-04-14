@@ -1,10 +1,13 @@
-[gd_scene load_steps=29 format=3 uid="uid://cb44ju8x525wn"]
+[gd_scene load_steps=39 format=3 uid="uid://cb44ju8x525wn"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.cs" id="1_p2hra"]
 [ext_resource type="Texture2D" uid="uid://ug5vnqueqory" path="res://Art/Character/blockhead_idle-Sheet.png" id="2_qftnk"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAnimation.cs" id="3_j6tys"]
 [ext_resource type="Texture2D" uid="uid://cnmujhjixerwd" path="res://Art/Character/blockhead_jump-Sheet.png" id="5_4hnrx"]
 [ext_resource type="Texture2D" uid="uid://6rym5sg6rsj1" path="res://Art/Character/blockhead_walk-Sheet.png" id="5_8s6y2"]
+[ext_resource type="Texture2D" uid="uid://drub8fxgf3qjl" path="res://Art/Character/blockhead_thinking-Sheet.png" id="5_vq5ht"]
+[ext_resource type="Texture2D" uid="uid://bovkkspc2u006" path="res://Art/Environment/pixel-speech-bubble.png" id="6_bwwdn"]
+[ext_resource type="Script" path="res://Scripts/Player/Block Summoning/SummoningCloud.cs" id="7_xjel3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isue1"]
 size = Vector2(18, 15)
@@ -56,6 +59,30 @@ region = Rect2(200, 0, 20, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0w75k"]
 atlas = ExtResource("5_4hnrx")
 region = Rect2(0, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5ybk"]
+atlas = ExtResource("5_vq5ht")
+region = Rect2(0, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drooe"]
+atlas = ExtResource("5_vq5ht")
+region = Rect2(20, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32eia"]
+atlas = ExtResource("5_vq5ht")
+region = Rect2(40, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4otm"]
+atlas = ExtResource("5_vq5ht")
+region = Rect2(60, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl3ok"]
+atlas = ExtResource("5_vq5ht")
+region = Rect2(80, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oadxx"]
+atlas = ExtResource("5_vq5ht")
+region = Rect2(100, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vr2qx"]
 atlas = ExtResource("5_8s6y2")
@@ -117,8 +144,31 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0w75k")
 }],
-"loop": true,
+"loop": false,
 "name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5ybk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drooe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32eia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4otm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl3ok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oadxx")
+}],
+"loop": false,
+"name": &"Think",
 "speed": 5.0
 }, {
 "frames": [{
@@ -199,6 +249,35 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_a47l3"]
 length = 0.001
 
+[sub_resource type="Animation" id="Animation_vm654"]
+resource_name = "Think"
+length = 0.60001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Think"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
 [sub_resource type="Animation" id="Animation_5cico"]
 resource_name = "Walk"
 length = 0.40001
@@ -233,14 +312,16 @@ _data = {
 "Idle": SubResource("Animation_a3un6"),
 "Jump": SubResource("Animation_khhun"),
 "RESET": SubResource("Animation_a47l3"),
+"Think": SubResource("Animation_vm654"),
 "Walk": SubResource("Animation_5cico")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_playerAnimation", "_animatedSprite2D")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_playerAnimation", "_animatedSprite2D", "_summoningCloud")]
 collision_mask = 2
 script = ExtResource("1_p2hra")
 _playerAnimation = NodePath("PlayerAnimationHandler")
 _animatedSprite2D = NodePath("AnimatedSprite2D")
+_summoningCloud = NodePath("SummoningCloudLogic")
 _moveSpeed = 150.0
 _jumpPower = 100.0
 _jumpHeight = 20.0
@@ -257,10 +338,22 @@ _animationPlayer = NodePath("../AnimatedSprite2D/AnimationPlayer")
 z_index = 5
 scale = Vector2(0.996391, 0.995386)
 sprite_frames = SubResource("SpriteFrames_ljcur")
-animation = &"Idle"
+animation = &"Think"
+frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_7s157")
 }
+
+[node name="SummoningCloudLogic" type="Node2D" parent="." node_paths=PackedStringArray("_summoningCloudSprite", "_playerAnimation")]
+script = ExtResource("7_xjel3")
+_summoningCloudSprite = NodePath("SummoningCloud")
+_playerAnimation = NodePath("../PlayerAnimationHandler")
+
+[node name="SummoningCloud" type="Sprite2D" parent="SummoningCloudLogic"]
+visible = false
+position = Vector2(29, -26)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("6_bwwdn")

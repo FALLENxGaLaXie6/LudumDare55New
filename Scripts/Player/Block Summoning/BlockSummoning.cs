@@ -1,5 +1,9 @@
 using Godot;
 using System;
+using GTweens.Easings;
+using GTweens.Extensions;
+using GTweens.Tweens;
+using GTweensGodot.Extensions;
 
 public partial class BlockSummoning : Node2D
 {
@@ -10,18 +14,21 @@ public partial class BlockSummoning : Node2D
 	[Export] private Vector2 blockSize = new Vector2(16, 16);
 	
 	// Mouse hover preview sprite
-	private Sprite2D previewSprite;
-	[Export] private Texture2D previewSpriteTexture;
+	[Export] private Sprite2D previewSprite;
+	[Export] private float _previewSpriteScaleAnimationSpeed = 2f;
+	
+	[Export] AnimationPlayer _animationPlayer;
+
+	
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		// Create preview sprite
-		previewSprite = new Sprite2D();
-		previewSprite.Texture = previewSpriteTexture;
-		previewSprite.Modulate = new Color(1, 1, 1, 0.5f); // Set opacity to 50%
-		AddChild(previewSprite);
+		SetPreviewSpriteAlpha(0.2f);
+		_animationPlayer.Play(Constants.Animation.TweenBlock, -1D, _previewSpriteScaleAnimationSpeed);
 	}
+
+	private void SetPreviewSpriteAlpha(float alpha) => previewSprite.Modulate = new Color(1, 1, 1, alpha);
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -42,18 +49,7 @@ public partial class BlockSummoning : Node2D
 		// Check if the player wants to place a block
 		if (Input.IsActionJustPressed(Constants.Input.PlaceBlock))
 		{
-			/*
-			// Check if there's already a block at the target position
-			if (GetNodeOrNull<Block>(gridPosition) == null)
-			{
-				// Instantiate the block prefab
-				Block newBlock = (Block)blockPrefab.Instance();
-				AddChild(newBlock);
-                
-				// Snap the block to the grid position
-				newBlock.Position = gridPosition;
-			}
-			*/
+			
 		}
 	}
 }

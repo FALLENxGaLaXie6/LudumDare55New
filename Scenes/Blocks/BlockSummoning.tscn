@@ -1,8 +1,52 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2ds6bbdufr81"]
+[gd_scene load_steps=5 format=3 uid="uid://b2ds6bbdufr81"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Block Summoning/BlockSummoning.cs" id="1_u6y7d"]
 [ext_resource type="Texture2D" uid="uid://cmiobsh4emj2y" path="res://Art/Environment/regular_block.png" id="2_vmgnq"]
 
-[node name="Block Summoning" type="Node2D"]
+[sub_resource type="Animation" id="Animation_ma0qk"]
+resource_name = "TweenBlock"
+length = 1.40001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PreviewSummonBlock:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.3, 0.3), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PreviewSummonBlock:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.737255), Color(1, 1, 1, 0.172549), Color(1, 1, 1, 0.737247)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hhc8s"]
+_data = {
+"TweenBlock": SubResource("Animation_ma0qk")
+}
+
+[node name="Block Summoning" type="Node2D" node_paths=PackedStringArray("previewSprite", "_animationPlayer")]
 script = ExtResource("1_u6y7d")
-previewSpriteTexture = ExtResource("2_vmgnq")
+previewSprite = NodePath("PreviewSummonBlock")
+_animationPlayer = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hhc8s")
+}
+
+[node name="PreviewSummonBlock" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.737247)
+texture = ExtResource("2_vmgnq")
