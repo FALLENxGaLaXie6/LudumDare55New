@@ -1,0 +1,181 @@
+[gd_scene load_steps=17 format=3 uid="uid://cj0rns0l0sffq"]
+
+[ext_resource type="Script" path="res://Scripts/Environment/SpawnableBlocks/ShieldSpawnableBlock.cs" id="1_wtqyy"]
+[ext_resource type="Texture2D" uid="uid://coa1yr7ex2n3q" path="res://Art/Character/shield_head-Sheet.png" id="3_jhorx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw6dm"]
+atlas = ExtResource("3_jhorx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1l66"]
+atlas = ExtResource("3_jhorx")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbmro"]
+atlas = ExtResource("3_jhorx")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl3wd"]
+atlas = ExtResource("3_jhorx")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8a4v"]
+atlas = ExtResource("3_jhorx")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qy8ae"]
+atlas = ExtResource("3_jhorx")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yme7"]
+atlas = ExtResource("3_jhorx")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vra11"]
+atlas = ExtResource("3_jhorx")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ioy1"]
+atlas = ExtResource("3_jhorx")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g344p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xw6dm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1l66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbmro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl3wd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8a4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qy8ae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yme7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vra11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ioy1")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_vur20"]
+resource_name = "Idle"
+length = 0.90001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_by10g"]
+length = 0.90001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_3hufe"]
+resource_name = "SelectedItem"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 5, -0.3, -3, 0.25, -0.25, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jabcj"]
+_data = {
+"Idle": SubResource("Animation_vur20"),
+"RESET": SubResource("Animation_by10g"),
+"SelectedItem": SubResource("Animation_3hufe")
+}
+
+[node name="ShieldSpawnableBlock" type="Node2D" node_paths=PackedStringArray("_animationPlayer")]
+position = Vector2(0, 0.150869)
+script = ExtResource("1_wtqyy")
+_animationPlayer = NodePath("AnimatedSprite2D/AnimationPlayer")
+_blockPrefab = null
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 4
+scale = Vector2(0.65, 0.65)
+sprite_frames = SubResource("SpriteFrames_g344p")
+animation = &"Idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_jabcj")
+}
