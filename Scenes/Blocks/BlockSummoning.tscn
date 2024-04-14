@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2ds6bbdufr81"]
+
+[ext_resource type="Script" path="res://Scripts/Player/Block Summoning/BlockSummoning.cs" id="1_u6y7d"]
+[ext_resource type="Texture2D" uid="uid://cmiobsh4emj2y" path="res://Art/Environment/regular_block.png" id="2_vmgnq"]
+
+[node name="Block Summoning" type="Node2D"]
+script = ExtResource("1_u6y7d")
+previewSpriteTexture = ExtResource("2_vmgnq")

@@ -14,5 +14,6 @@ public class Constants
         public static readonly StringName MoveLeft = new ("MoveLeft");
         public static readonly StringName MoveRight = new ("MoveRight");
         public static readonly StringName Jump = new ("Jump");
+        public static readonly StringName PlaceBlock = new ("PlaceBlock");
     }
 }

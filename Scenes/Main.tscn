@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://yj28gt3r8lwu"]
+[gd_scene load_steps=10 format=3 uid="uid://yj28gt3r8lwu"]
 
 [ext_resource type="Script" path="res://Scripts/Camera/CameraFollow.cs" id="1_fw2sh"]
 [ext_resource type="Texture2D" uid="uid://dvao2tmofbwy7" path="res://Test Stuff/tilemap1.png" id="1_xwe0u"]
 [ext_resource type="PackedScene" uid="uid://cb44ju8x525wn" path="res://Scenes/Player.tscn" id="2_gsx2r"]
 [ext_resource type="Texture2D" uid="uid://cv1h6rhixjtkh" path="res://Art/Environment/tile_map.png" id="2_ouvim"]
 [ext_resource type="PackedScene" uid="uid://dtyha20refwht" path="res://Scenes/big_dude.tscn" id="4_p54d5"]
+[ext_resource type="PackedScene" uid="uid://b2ds6bbdufr81" path="res://Scenes/Blocks/BlockSummoning.tscn" id="6_y7su2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5y7cu"]
 texture = ExtResource("1_xwe0u")
@@ -1006,3 +1007,5 @@ layer_1/tile_data = PackedInt32Array()
 [node name="Background" type="Node" parent="."]
 
 [node name="Big Dude" parent="Background" instance=ExtResource("4_p54d5")]
+
+[node name="Block Summoning" parent="." instance=ExtResource("6_y7su2")]
