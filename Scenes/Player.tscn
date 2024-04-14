@@ -236,23 +236,30 @@ _data = {
 "Walk": SubResource("Animation_5cico")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_playerAnimation", "_animatedSprite2D")]
 collision_mask = 2
 script = ExtResource("1_p2hra")
+_playerAnimation = NodePath("PlayerAnimationHandler")
+_animatedSprite2D = NodePath("AnimatedSprite2D")
 _moveSpeed = 150.0
 _jumpPower = 100.0
+_jumpHeight = 50.0
+_jumpTimeToPeek = 0.7
+_jumpTimeToDescent = 0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_isue1")
 
-[node name="PlayerAnimationHandler" type="Node" parent="."]
+[node name="PlayerAnimationHandler" type="Node" parent="." node_paths=PackedStringArray("_animationPlayer")]
 script = ExtResource("3_j6tys")
+_animationPlayer = NodePath("../AnimatedSprite2D/AnimationPlayer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
 scale = Vector2(0.996391, 0.995386)
 sprite_frames = SubResource("SpriteFrames_ljcur")
-animation = &"Walk"
+animation = &"Idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 root_node = NodePath("../..")

@@ -1,0 +1,103 @@
+[gd_scene load_steps=12 format=3 uid="uid://dtyha20refwht"]
+
+[ext_resource type="Texture2D" uid="uid://jeanfbg4jk6g" path="res://Art/Environment/giant_face_idle-Sheet.png" id="1_agtep"]
+[ext_resource type="Script" path="res://Scripts/Environment/BigDude.cs" id="1_xuc8q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mc1mn"]
+atlas = ExtResource("1_agtep")
+region = Rect2(0, 0, 160, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft8fy"]
+atlas = ExtResource("1_agtep")
+region = Rect2(160, 0, 160, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifuet"]
+atlas = ExtResource("1_agtep")
+region = Rect2(320, 0, 160, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iguo"]
+atlas = ExtResource("1_agtep")
+region = Rect2(480, 0, 160, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0w5uj"]
+atlas = ExtResource("1_agtep")
+region = Rect2(640, 0, 160, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41303"]
+atlas = ExtResource("1_agtep")
+region = Rect2(800, 0, 160, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uqmbq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mc1mn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft8fy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifuet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8iguo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0w5uj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41303")
+}],
+"loop": true,
+"name": &"BigDudeIdle",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_nhhq8"]
+resource_name = "Idle"
+length = 0.60001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_42c2u"]
+_data = {
+"Idle": SubResource("Animation_nhhq8")
+}
+
+[node name="Big Dude" type="Node2D" node_paths=PackedStringArray("_animationPlayer")]
+script = ExtResource("1_xuc8q")
+_animationPlayer = NodePath("AnimatedSprite2D/AnimationPlayer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(163, -94)
+scale = Vector2(1.0125, 1.2375)
+sprite_frames = SubResource("SpriteFrames_uqmbq")
+animation = &"BigDudeIdle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_42c2u")
+}
