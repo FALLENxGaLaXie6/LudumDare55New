@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy77tm7uccqmd"
-path="res://.godot/imported/blockhead_thinking-Sheet.png-7a57fb9cf9fa5a7bfecb77d4b51e900a.ctex"
+uid="uid://dwqrkhyo7bttu"
+path="res://.godot/imported/blockhead_walk_thinking-Sheet.png-81c8b086c6509228914db8c43c9522b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Character/blockhead_thinking-Sheet.png"
-dest_files=["res://.godot/imported/blockhead_thinking-Sheet.png-7a57fb9cf9fa5a7bfecb77d4b51e900a.ctex"]
+source_file="res://Art/Character/blockhead_walk_thinking-Sheet.png"
+dest_files=["res://.godot/imported/blockhead_walk_thinking-Sheet.png-81c8b086c6509228914db8c43c9522b3.ctex"]
 
 [params]
 

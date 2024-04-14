@@ -1,11 +1,8 @@
-[gd_scene load_steps=43 format=3 uid="uid://cb44ju8x525wn"]
+[gd_scene load_steps=47 format=3 uid="uid://cb44ju8x525wn"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.cs" id="1_p2hra"]
-[ext_resource type="Texture2D" uid="uid://ug5vnqueqory" path="res://Art/Character/blockhead_idle-Sheet.png" id="2_qftnk"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAnimation.cs" id="3_j6tys"]
-[ext_resource type="Texture2D" uid="uid://cnmujhjixerwd" path="res://Art/Character/blockhead_jump-Sheet.png" id="5_4hnrx"]
-[ext_resource type="Texture2D" uid="uid://6rym5sg6rsj1" path="res://Art/Character/blockhead_walk-Sheet.png" id="5_8s6y2"]
-[ext_resource type="Texture2D" uid="uid://drub8fxgf3qjl" path="res://Art/Character/blockhead_thinking-Sheet.png" id="5_vq5ht"]
+[ext_resource type="Texture2D" uid="uid://dwqrkhyo7bttu" path="res://Art/Character/blockhead_walk_thinking-Sheet.png" id="3_majje"]
 [ext_resource type="Texture2D" uid="uid://bovkkspc2u006" path="res://Art/Environment/pixel-speech-bubble.png" id="6_bwwdn"]
 [ext_resource type="Script" path="res://Scripts/Player/Block Summoning/SummoningCloud.cs" id="7_xjel3"]
 [ext_resource type="Texture2D" uid="uid://cmiobsh4emj2y" path="res://Art/Environment/regular_block.png" id="8_w1omr"]
@@ -14,129 +11,153 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isue1"]
 size = Vector2(18, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mdl4u"]
-atlas = ExtResource("2_qftnk")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kfp8k"]
+load_path = "res://.godot/imported/blockhead_idle-Sheet.png-0965483f5e2711154b684fffb490a5fa.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yerbr"]
+atlas = SubResource("CompressedTexture2D_kfp8k")
 region = Rect2(0, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pvtm2"]
-atlas = ExtResource("2_qftnk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_q611k"]
+atlas = SubResource("CompressedTexture2D_kfp8k")
 region = Rect2(20, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yb6bl"]
-atlas = ExtResource("2_qftnk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tiw0o"]
+atlas = SubResource("CompressedTexture2D_kfp8k")
 region = Rect2(40, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4mkj3"]
-atlas = ExtResource("2_qftnk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pe62"]
+atlas = SubResource("CompressedTexture2D_kfp8k")
 region = Rect2(60, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wgynm"]
-atlas = ExtResource("2_qftnk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_170iq"]
+atlas = SubResource("CompressedTexture2D_kfp8k")
 region = Rect2(80, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4r6gc"]
-atlas = ExtResource("2_qftnk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_saaq6"]
+atlas = SubResource("CompressedTexture2D_kfp8k")
 region = Rect2(100, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t0e05"]
-atlas = ExtResource("2_qftnk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_757jl"]
+atlas = SubResource("CompressedTexture2D_kfp8k")
 region = Rect2(120, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bfluq"]
-atlas = ExtResource("2_qftnk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_71065"]
+atlas = SubResource("CompressedTexture2D_kfp8k")
 region = Rect2(140, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h2yx8"]
-atlas = ExtResource("2_qftnk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxt32"]
+atlas = SubResource("CompressedTexture2D_kfp8k")
 region = Rect2(160, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vq5b8"]
-atlas = ExtResource("2_qftnk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqnp5"]
+atlas = SubResource("CompressedTexture2D_kfp8k")
 region = Rect2(180, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t0cmv"]
-atlas = ExtResource("2_qftnk")
-region = Rect2(200, 0, 20, 16)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rc3jo"]
+load_path = "res://.godot/imported/blockhead_jump-Sheet.png-88cdb5214e303ff8ac8a05b4b04db27a.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0w75k"]
-atlas = ExtResource("5_4hnrx")
+atlas = SubResource("CompressedTexture2D_rc3jo")
 region = Rect2(0, 0, 20, 16)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1f6gu"]
+load_path = "res://.godot/imported/blockhead_thinking-Sheet.png-7a57fb9cf9fa5a7bfecb77d4b51e900a.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5ybk"]
-atlas = ExtResource("5_vq5ht")
+atlas = SubResource("CompressedTexture2D_1f6gu")
 region = Rect2(0, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_drooe"]
-atlas = ExtResource("5_vq5ht")
+atlas = SubResource("CompressedTexture2D_1f6gu")
 region = Rect2(20, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32eia"]
-atlas = ExtResource("5_vq5ht")
+atlas = SubResource("CompressedTexture2D_1f6gu")
 region = Rect2(40, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u4otm"]
-atlas = ExtResource("5_vq5ht")
+atlas = SubResource("CompressedTexture2D_1f6gu")
 region = Rect2(60, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gl3ok"]
-atlas = ExtResource("5_vq5ht")
+atlas = SubResource("CompressedTexture2D_1f6gu")
 region = Rect2(80, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oadxx"]
-atlas = ExtResource("5_vq5ht")
+atlas = SubResource("CompressedTexture2D_1f6gu")
 region = Rect2(100, 0, 20, 16)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o0m64"]
+load_path = "res://.godot/imported/blockhead_walk-Sheet.png-7077f9d7392efb438350b7a9c12cb09e.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vr2qx"]
-atlas = ExtResource("5_8s6y2")
+atlas = SubResource("CompressedTexture2D_o0m64")
 region = Rect2(0, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ih7e"]
-atlas = ExtResource("5_8s6y2")
+atlas = SubResource("CompressedTexture2D_o0m64")
 region = Rect2(20, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x6kat"]
-atlas = ExtResource("5_8s6y2")
+atlas = SubResource("CompressedTexture2D_o0m64")
 region = Rect2(40, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8jpcq"]
-atlas = ExtResource("5_8s6y2")
+atlas = SubResource("CompressedTexture2D_o0m64")
+region = Rect2(60, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxkmc"]
+atlas = ExtResource("3_majje")
+region = Rect2(0, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fltrq"]
+atlas = ExtResource("3_majje")
+region = Rect2(20, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru4xk"]
+atlas = ExtResource("3_majje")
+region = Rect2(40, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8dq1"]
+atlas = ExtResource("3_majje")
 region = Rect2(60, 0, 20, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ljcur"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mdl4u")
+"texture": SubResource("AtlasTexture_yerbr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pvtm2")
+"texture": SubResource("AtlasTexture_q611k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yb6bl")
+"texture": SubResource("AtlasTexture_tiw0o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4mkj3")
+"texture": SubResource("AtlasTexture_6pe62")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wgynm")
+"texture": SubResource("AtlasTexture_170iq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4r6gc")
+"texture": SubResource("AtlasTexture_saaq6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t0e05")
+"texture": SubResource("AtlasTexture_757jl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bfluq")
+"texture": SubResource("AtlasTexture_71065")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h2yx8")
+"texture": SubResource("AtlasTexture_pxt32")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vq5b8")
+"texture": SubResource("AtlasTexture_wqnp5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t0cmv")
+"texture": SubResource("AtlasTexture_6pe62")
 }],
 "loop": false,
 "name": &"Idle",
@@ -188,6 +209,23 @@ animations = [{
 }],
 "loop": false,
 "name": &"Walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxkmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fltrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ru4xk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8dq1")
+}],
+"loop": true,
+"name": &"Walk Think",
 "speed": 5.0
 }]
 
@@ -251,6 +289,35 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_a47l3"]
 length = 0.001
 
+[sub_resource type="Animation" id="Animation_r3e8a"]
+resource_name = "Run"
+length = 0.40001
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Walk"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="Animation" id="Animation_vm654"]
 resource_name = "Think"
 length = 0.60001
@@ -284,35 +351,6 @@ tracks/1/keys = {
 resource_name = "Walk"
 length = 0.40001
 loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Walk"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_r3e8a"]
-resource_name = "Run"
-length = 0.40001
-step = 0.025
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -382,6 +420,7 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_7s157")
 }
+speed_scale = 0.49
 
 [node name="SummoningCloudNode" type="Node2D" parent="."]
 
