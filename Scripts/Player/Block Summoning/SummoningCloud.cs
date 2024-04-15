@@ -15,11 +15,15 @@ public partial class SummoningCloud : Node
 	[Export] private AnimatedSprite2D _playerAnimatedSprite;
 	[Export] private Node2D _playerNode;
 	[Export] private float _summoningCloudGrowSpeed = 5f;
+	[Export] private BlockInventory _blockInventory;
 
 	public static bool SummoningCloudActive { get; set; } = false;
 
 	public override void _Ready()
 	{
+		//Select the first inventory item in the thought bubble
+		_blockInventory.SelectFirstInventoryItem();
+		
 		_summoningCloudPositionLeft.Position =
 			new Vector2(-_summoningCloudOffsetFromPlayer.X * 5, _summoningCloudOffsetFromPlayer.Y);
 		_summoningCloudPositionRight.Position =
@@ -29,9 +33,17 @@ public partial class SummoningCloud : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
+		HandleRotateSelectedThoughtBubbleItem();
 		MoveSummoningCloud(delta);
 		HandleSummoningCloudVisuals();
+	}
+
+	private void HandleRotateSelectedThoughtBubbleItem()
+	{
+		if (Input.IsActionJustPressed(Constants.Input.RotateSelectedItem))
+		{
+			_blockInventory.SetNewCurrentSelectedInventoryItem();
+		}
 	}
 
 	private void HandleSummoningCloudVisuals()

@@ -10,6 +10,7 @@ public class Constants
         public static readonly StringName Think = new ("Think");
         public static readonly StringName TweenBlock = new ("TweenBlock");
         public static readonly StringName Run = new ("Run");
+        public static readonly StringName SelectedItem = new ("SelectedItem");
     }
     
     public static class Input
@@ -20,5 +21,6 @@ public class Constants
         public static readonly StringName Jump = new ("Jump");
         public static readonly StringName PlaceBlock = new ("PlaceBlock");
         public static readonly StringName SummonCloud = new ("SummonCloud");
+        public static readonly StringName RotateSelectedItem = new ("RotateSelectedItem");
     }
 }

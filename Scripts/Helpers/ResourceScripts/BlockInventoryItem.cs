@@ -4,7 +4,7 @@ using System;
 [GlobalClass]
 public partial class BlockInventoryItem : Resource
 {
-	[Export] private PackedScene _blockInventoryItem;
+	[Export] private PackedScene _blockInventoryItemPrefab;
 
 	public void Init(Vector2 position)
 	{

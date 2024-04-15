@@ -1,165 +1,140 @@
-[gd_scene load_steps=47 format=3 uid="uid://cb44ju8x525wn"]
+[gd_scene load_steps=44 format=3 uid="uid://cb44ju8x525wn"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.cs" id="1_p2hra"]
+[ext_resource type="Texture2D" uid="uid://cgd7s5lusfkht" path="res://Art/Character/blockhead_idle-Sheet.png" id="2_qftnk"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAnimation.cs" id="3_j6tys"]
-[ext_resource type="Texture2D" uid="uid://dwqrkhyo7bttu" path="res://Art/Character/blockhead_walk_thinking-Sheet.png" id="3_majje"]
+[ext_resource type="Texture2D" uid="uid://c5ip6ml3g7hqi" path="res://Art/Character/blockhead_jump-Sheet.png" id="5_4hnrx"]
+[ext_resource type="Texture2D" uid="uid://btf1nckd0mhy8" path="res://Art/Character/blockhead_walk-Sheet.png" id="5_8s6y2"]
+[ext_resource type="Texture2D" uid="uid://dy77tm7uccqmd" path="res://Art/Character/blockhead_thinking-Sheet.png" id="5_vq5ht"]
 [ext_resource type="Texture2D" uid="uid://bovkkspc2u006" path="res://Art/Environment/pixel-speech-bubble.png" id="6_bwwdn"]
 [ext_resource type="Script" path="res://Scripts/Player/Block Summoning/SummoningCloud.cs" id="7_xjel3"]
-[ext_resource type="Texture2D" uid="uid://cmiobsh4emj2y" path="res://Art/Environment/regular_block.png" id="8_w1omr"]
-[ext_resource type="Shader" path="res://Scenes/Player.gdshader" id="9_muaco"]
+[ext_resource type="Script" path="res://Scripts/Helpers/ResourceScripts/BlockInventory.cs" id="8_kov54"]
+[ext_resource type="PackedScene" uid="uid://b4xv6nssidm5j" path="res://Scenes/Blocks/SpawnableBlocks/Stationary_Spawnable_Block.tscn" id="8_waijo"]
+[ext_resource type="PackedScene" uid="uid://cwm3ciqwipvxa" path="res://Scenes/Blocks/SpawnableBlocks/Walking_Spawnable_Block.tscn" id="9_xdqph"]
+[ext_resource type="PackedScene" uid="uid://cj0rns0l0sffq" path="res://Scenes/Blocks/SpawnableBlocks/ShieldHeadSpawnableBlock.tscn" id="10_16gbq"]
+[ext_resource type="Texture2D" uid="uid://cmiobsh4emj2y" path="res://Art/Environment/regular_block.png" id="13_ffytx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isue1"]
 size = Vector2(18, 15)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kfp8k"]
-load_path = "res://.godot/imported/blockhead_idle-Sheet.png-0965483f5e2711154b684fffb490a5fa.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yerbr"]
-atlas = SubResource("CompressedTexture2D_kfp8k")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ns0y"]
+atlas = ExtResource("2_qftnk")
 region = Rect2(0, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q611k"]
-atlas = SubResource("CompressedTexture2D_kfp8k")
+[sub_resource type="AtlasTexture" id="AtlasTexture_svx8i"]
+atlas = ExtResource("2_qftnk")
 region = Rect2(20, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tiw0o"]
-atlas = SubResource("CompressedTexture2D_kfp8k")
+[sub_resource type="AtlasTexture" id="AtlasTexture_78mmp"]
+atlas = ExtResource("2_qftnk")
 region = Rect2(40, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6pe62"]
-atlas = SubResource("CompressedTexture2D_kfp8k")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vne3k"]
+atlas = ExtResource("2_qftnk")
 region = Rect2(60, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_170iq"]
-atlas = SubResource("CompressedTexture2D_kfp8k")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmese"]
+atlas = ExtResource("2_qftnk")
 region = Rect2(80, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_saaq6"]
-atlas = SubResource("CompressedTexture2D_kfp8k")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmelf"]
+atlas = ExtResource("2_qftnk")
 region = Rect2(100, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_757jl"]
-atlas = SubResource("CompressedTexture2D_kfp8k")
+[sub_resource type="AtlasTexture" id="AtlasTexture_o67fe"]
+atlas = ExtResource("2_qftnk")
 region = Rect2(120, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_71065"]
-atlas = SubResource("CompressedTexture2D_kfp8k")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7flrv"]
+atlas = ExtResource("2_qftnk")
 region = Rect2(140, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pxt32"]
-atlas = SubResource("CompressedTexture2D_kfp8k")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vupmt"]
+atlas = ExtResource("2_qftnk")
 region = Rect2(160, 0, 20, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wqnp5"]
-atlas = SubResource("CompressedTexture2D_kfp8k")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dvq7"]
+atlas = ExtResource("2_qftnk")
 region = Rect2(180, 0, 20, 16)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rc3jo"]
-load_path = "res://.godot/imported/blockhead_jump-Sheet.png-88cdb5214e303ff8ac8a05b4b04db27a.ctex"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_0w75k"]
-atlas = SubResource("CompressedTexture2D_rc3jo")
+atlas = ExtResource("5_4hnrx")
 region = Rect2(0, 0, 20, 16)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1f6gu"]
-load_path = "res://.godot/imported/blockhead_thinking-Sheet.png-7a57fb9cf9fa5a7bfecb77d4b51e900a.ctex"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5ybk"]
-atlas = SubResource("CompressedTexture2D_1f6gu")
+atlas = ExtResource("5_vq5ht")
 region = Rect2(0, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_drooe"]
-atlas = SubResource("CompressedTexture2D_1f6gu")
+atlas = ExtResource("5_vq5ht")
 region = Rect2(20, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32eia"]
-atlas = SubResource("CompressedTexture2D_1f6gu")
+atlas = ExtResource("5_vq5ht")
 region = Rect2(40, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u4otm"]
-atlas = SubResource("CompressedTexture2D_1f6gu")
+atlas = ExtResource("5_vq5ht")
 region = Rect2(60, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gl3ok"]
-atlas = SubResource("CompressedTexture2D_1f6gu")
+atlas = ExtResource("5_vq5ht")
 region = Rect2(80, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oadxx"]
-atlas = SubResource("CompressedTexture2D_1f6gu")
+atlas = ExtResource("5_vq5ht")
 region = Rect2(100, 0, 20, 16)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o0m64"]
-load_path = "res://.godot/imported/blockhead_walk-Sheet.png-7077f9d7392efb438350b7a9c12cb09e.ctex"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_vr2qx"]
-atlas = SubResource("CompressedTexture2D_o0m64")
+atlas = ExtResource("5_8s6y2")
 region = Rect2(0, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ih7e"]
-atlas = SubResource("CompressedTexture2D_o0m64")
+atlas = ExtResource("5_8s6y2")
 region = Rect2(20, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x6kat"]
-atlas = SubResource("CompressedTexture2D_o0m64")
+atlas = ExtResource("5_8s6y2")
 region = Rect2(40, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8jpcq"]
-atlas = SubResource("CompressedTexture2D_o0m64")
-region = Rect2(60, 0, 20, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wxkmc"]
-atlas = ExtResource("3_majje")
-region = Rect2(0, 0, 20, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fltrq"]
-atlas = ExtResource("3_majje")
-region = Rect2(20, 0, 20, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ru4xk"]
-atlas = ExtResource("3_majje")
-region = Rect2(40, 0, 20, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u8dq1"]
-atlas = ExtResource("3_majje")
+atlas = ExtResource("5_8s6y2")
 region = Rect2(60, 0, 20, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ljcur"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yerbr")
+"texture": SubResource("AtlasTexture_8ns0y")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q611k")
+"texture": SubResource("AtlasTexture_svx8i")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tiw0o")
+"texture": SubResource("AtlasTexture_78mmp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6pe62")
+"texture": SubResource("AtlasTexture_vne3k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_170iq")
+"texture": SubResource("AtlasTexture_tmese")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_saaq6")
+"texture": SubResource("AtlasTexture_xmelf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_757jl")
+"texture": SubResource("AtlasTexture_o67fe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_71065")
+"texture": SubResource("AtlasTexture_7flrv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pxt32")
+"texture": SubResource("AtlasTexture_vupmt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wqnp5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6pe62")
+"texture": SubResource("AtlasTexture_7dvq7")
 }],
-"loop": false,
+"loop": true,
 "name": &"Idle",
 "speed": 5.0
 }, {
@@ -210,28 +185,11 @@ animations = [{
 "loop": false,
 "name": &"Walk",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wxkmc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fltrq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ru4xk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u8dq1")
-}],
-"loop": true,
-"name": &"Walk Think",
-"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_a3un6"]
 resource_name = "Idle"
-length = 1.00001
+length = 0.9091
 loop_mode = 1
 step = 0.0909091
 tracks/0/type = "value"
@@ -253,10 +211,10 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
 [sub_resource type="Animation" id="Animation_khhun"]
@@ -386,9 +344,6 @@ _data = {
 "Walk": SubResource("Animation_5cico")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cskps"]
-shader = ExtResource("9_muaco")
-
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_playerAnimation", "_animatedSprite2D", "_summoningCloud", "_summoningCloudNode")]
 collision_mask = 2
 script = ExtResource("1_p2hra")
@@ -413,44 +368,35 @@ _animationPlayer = NodePath("../AnimatedSprite2D/AnimationPlayer")
 z_index = 5
 scale = Vector2(0.996391, 0.995386)
 sprite_frames = SubResource("SpriteFrames_ljcur")
-animation = &"Walk"
+animation = &"Idle"
+frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_7s157")
 }
-speed_scale = 0.49
 
 [node name="SummoningCloudNode" type="Node2D" parent="."]
 
 [node name="SummoningCloud" type="Sprite2D" parent="SummoningCloudNode"]
+z_index = 3
 position = Vector2(29, -26)
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("6_bwwdn")
 
-[node name="Block1" type="Sprite2D" parent="SummoningCloudNode/SummoningCloud"]
+[node name="StationarySpawnableBlock" parent="SummoningCloudNode/SummoningCloud" instance=ExtResource("8_waijo")]
 position = Vector2(-350, -100)
-scale = Vector2(8, 8)
-texture = ExtResource("8_w1omr")
+scale = Vector2(16.6667, 16.6667)
 
-[node name="Block2" type="Sprite2D" parent="SummoningCloudNode/SummoningCloud"]
-material = SubResource("ShaderMaterial_cskps")
-position = Vector2(-216.667, -100)
-scale = Vector2(8, 8)
-texture = ExtResource("8_w1omr")
+[node name="WalkingSpawnableBlock" parent="SummoningCloudNode/SummoningCloud" instance=ExtResource("9_xdqph")]
+scale = Vector2(16.6667, 16.6667)
 
-[node name="Block3" type="Sprite2D" parent="SummoningCloudNode/SummoningCloud"]
-position = Vector2(-83.3333, -100)
-scale = Vector2(8, 8)
-texture = ExtResource("8_w1omr")
+[node name="ShieldSpawnableBlock" parent="SummoningCloudNode/SummoningCloud" instance=ExtResource("10_16gbq")]
+position = Vector2(183.333, -100)
+scale = Vector2(16.6667, 16.6667)
 
-[node name="Block4" type="Sprite2D" parent="SummoningCloudNode/SummoningCloud"]
-position = Vector2(50, -100)
-scale = Vector2(8, 8)
-texture = ExtResource("8_w1omr")
-
-[node name="SummoningCloudLogic" type="Node" parent="SummoningCloudNode" node_paths=PackedStringArray("_summoningCloudSprite", "_playerAnimation", "_summoningCloudNode", "_summoningCloudPositionLeft", "_summoningCloudPositionRight", "_playerAnimatedSprite", "_playerNode")]
+[node name="SummoningCloudLogic" type="Node" parent="SummoningCloudNode" node_paths=PackedStringArray("_summoningCloudSprite", "_playerAnimation", "_summoningCloudNode", "_summoningCloudPositionLeft", "_summoningCloudPositionRight", "_playerAnimatedSprite", "_playerNode", "_blockInventory")]
 script = ExtResource("7_xjel3")
 _summoningCloudSprite = NodePath("../SummoningCloud")
 _playerAnimation = NodePath("../../PlayerAnimationHandler")
@@ -462,9 +408,66 @@ _summoningCloudSpeed = 10.0
 _playerAnimatedSprite = NodePath("../../AnimatedSprite2D")
 _playerNode = NodePath("../..")
 _summoningCloudGrowSpeed = 10.0
+_blockInventory = NodePath("Block Inventory")
+
+[node name="Block Inventory" type="Node2D" parent="SummoningCloudNode/SummoningCloudLogic" node_paths=PackedStringArray("_blockInventorySpawnableBlocks", "_summoningCloudNode")]
+script = ExtResource("8_kov54")
+_blockInventoryItemPrefabs = Array[PackedScene]([ExtResource("8_waijo")])
+_blockInventorySpawnableBlocks = [NodePath("../../SummoningCloud/StationarySpawnableBlock"), NodePath("../../SummoningCloud/WalkingSpawnableBlock"), NodePath("../../SummoningCloud/ShieldSpawnableBlock")]
+_summoningCloudNode = NodePath("../../SummoningCloud")
 
 [node name="SummoningCloudPositionAnchorLeft" type="Node2D" parent="."]
 position = Vector2(-21, -16)
 
 [node name="SummoningCloudPositionAnchorRight" type="Node2D" parent="."]
 position = Vector2(21, -16)
+
+[node name="BlockSpawnLocations" type="Node2D" parent="."]
+
+[node name="Right" type="Node2D" parent="BlockSpawnLocations"]
+position = Vector2(24, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BlockSpawnLocations/Right"]
+texture = ExtResource("13_ffytx")
+
+[node name="Left" type="Node2D" parent="BlockSpawnLocations"]
+position = Vector2(-25, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BlockSpawnLocations/Left"]
+texture = ExtResource("13_ffytx")
+
+[node name="Up" type="Node2D" parent="BlockSpawnLocations"]
+position = Vector2(0, -24)
+
+[node name="Sprite2D" type="Sprite2D" parent="BlockSpawnLocations/Up"]
+texture = ExtResource("13_ffytx")
+
+[node name="Down" type="Node2D" parent="BlockSpawnLocations"]
+position = Vector2(0, 24)
+
+[node name="Sprite2D" type="Sprite2D" parent="BlockSpawnLocations/Down"]
+texture = ExtResource("13_ffytx")
+
+[node name="Up Right" type="Node2D" parent="BlockSpawnLocations"]
+position = Vector2(24, -24)
+
+[node name="Sprite2D" type="Sprite2D" parent="BlockSpawnLocations/Up Right"]
+texture = ExtResource("13_ffytx")
+
+[node name="Up Left" type="Node2D" parent="BlockSpawnLocations"]
+position = Vector2(-25, -24)
+
+[node name="Sprite2D" type="Sprite2D" parent="BlockSpawnLocations/Up Left"]
+texture = ExtResource("13_ffytx")
+
+[node name="Down Left" type="Node2D" parent="BlockSpawnLocations"]
+position = Vector2(-25, 24)
+
+[node name="Sprite2D" type="Sprite2D" parent="BlockSpawnLocations/Down Left"]
+texture = ExtResource("13_ffytx")
+
+[node name="Down Right" type="Node2D" parent="BlockSpawnLocations"]
+position = Vector2(24, 24)
+
+[node name="Sprite2D" type="Sprite2D" parent="BlockSpawnLocations/Down Right"]
+texture = ExtResource("13_ffytx")
