@@ -5,10 +5,25 @@ public partial class EnvironmentWalkingDude : CharacterBody2D
 {
 	[Export] protected AnimationPlayer _animationPlayer;
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-	
+
+	[Export] private Area2D wallDetectionArea;
+	[Export] private AnimatedSprite2D _sprite;
 	
 	private float moveSpeed = 0.5f;
 	private bool movingRight = true;
+	
+	public override void _Ready()
+	{
+		wallDetectionArea.BodyEntered += WallDetectionArea_BodyEntered;
+		StartAnimationInThoughtBubble();
+	}
+
+	private void WallDetectionArea_BodyEntered(Node2D body)
+	{
+		GD.Print("Body entered!!!!!");
+		movingRight = !movingRight;
+	}
+
 	public override void _PhysicsProcess(double delta)
 	{
 		// Calculate movement
@@ -22,8 +37,14 @@ public partial class EnvironmentWalkingDude : CharacterBody2D
 		// Add the gravity.
 		velocity.Y += Gravity * (float)delta;
 
+		_sprite.FlipH = !movingRight;
 		Velocity = velocity;
 		MoveAndSlide();
+
+		for (int i = 0; i < GetSlideCollisionCount(); i++)
+		{
+			GetSlideCollision(i).GetCollider();
+		}
 	}
 	
 	// Calculate movement based on direction
@@ -55,14 +76,12 @@ public partial class EnvironmentWalkingDude : CharacterBody2D
 	{
 		if (IsOnWall())
 		{
+			GD.Print("Got a wall!");
 			movingRight = !movingRight;
 		}
 	}
 	
-	public override void _Ready()
-	{
-		StartAnimationInThoughtBubble();
-	}
+	
 
 	public virtual void Spawn(Vector2 position)
 	{

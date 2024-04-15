@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://iupfxjw2l5yu"]
+[gd_scene load_steps=16 format=3 uid="uid://iupfxjw2l5yu"]
 
 [ext_resource type="Script" path="res://Scripts/Environment/SpawnableBlocks/EnvironmentWalkingDude.cs" id="1_nkmtt"]
 [ext_resource type="Texture2D" uid="uid://k6lvmei4qkie" path="res://Art/Character/walk_block-Sheet.png" id="4_vx1sm"]
@@ -133,13 +133,18 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_68bej"]
 size = Vector2(10, 10.3421)
 
-[node name="WalkingSpawnableBlock" type="CharacterBody2D" node_paths=PackedStringArray("_animationPlayer")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk17o"]
+size = Vector2(10.675, 10.545)
+
+[node name="WalkingSpawnableBlock" type="CharacterBody2D" node_paths=PackedStringArray("_animationPlayer", "wallDetectionArea", "_sprite")]
 position = Vector2(0, 4.98549)
 scale = Vector2(1, 0.966923)
 collision_layer = 6
 collision_mask = 7
 script = ExtResource("1_nkmtt")
 _animationPlayer = NodePath("AnimatedSprite2D/AnimationPlayer")
+wallDetectionArea = NodePath("Area2D")
+_sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 4
@@ -156,3 +161,10 @@ libraries = {
 position = Vector2(0, 0.015007)
 scale = Vector2(1, 0.990101)
 shape = SubResource("RectangleShape2D_68bej")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 6
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_gk17o")
