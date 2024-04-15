@@ -35,16 +35,16 @@ public partial class PlayerMovement : CharacterBody2D
 		BlockSpawnLocations[1] = new Vector2(magicBlockLocationNumber, 0);
 		//Down
 		BlockSpawnLocations[2] = new Vector2(0, magicBlockLocationNumber);
-        //Left
-        BlockSpawnLocations[3] = new Vector2(-magicBlockLocationNumber, 0);
-        //Up Right
-        BlockSpawnLocations[4] = new Vector2(magicBlockLocationNumber, -magicBlockLocationNumber);
-        //Down Right
-        BlockSpawnLocations[5] = new Vector2(magicBlockLocationNumber, magicBlockLocationNumber);
-        //Down Left
-        BlockSpawnLocations[6] = new Vector2(-magicBlockLocationNumber, magicBlockLocationNumber);
-        //Up Left
-        BlockSpawnLocations[7] = new Vector2(-magicBlockLocationNumber, -magicBlockLocationNumber);
+		//Left
+		BlockSpawnLocations[3] = new Vector2(-magicBlockLocationNumber, 0);
+		//Up Right
+		BlockSpawnLocations[4] = new Vector2(magicBlockLocationNumber, -magicBlockLocationNumber);
+		//Down Right
+		BlockSpawnLocations[5] = new Vector2(magicBlockLocationNumber, magicBlockLocationNumber);
+		//Down Left
+		BlockSpawnLocations[6] = new Vector2(-magicBlockLocationNumber, magicBlockLocationNumber);
+		//Up Left
+		BlockSpawnLocations[7] = new Vector2(-magicBlockLocationNumber, -magicBlockLocationNumber);
 	}
 
 	public override void _PhysicsProcess(double delta)
