@@ -136,7 +136,7 @@ loop_mode = 1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("..:position:x")
+tracks/0/path = NodePath(".:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -147,7 +147,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("..:position:y")
+tracks/1/path = NodePath(".:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -164,7 +164,6 @@ _data = {
 }
 
 [node name="ShieldSpawnableBlock" type="Node2D" node_paths=PackedStringArray("_animationPlayer")]
-position = Vector2(0, 0.150869)
 script = ExtResource("1_wtqyy")
 _animationPlayer = NodePath("AnimatedSprite2D/AnimationPlayer")
 _blockPrefab = null

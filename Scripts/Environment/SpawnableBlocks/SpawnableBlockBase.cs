@@ -24,22 +24,17 @@ public abstract partial class SpawnableBlockBase : Node2D
 
 	public virtual void StartSelectedAnimationInThoughtBubble(int i)
 	{
-		_animationPlayer.Stop();
+		//_animationPlayer.Stop();
 		_animationPlayer.Play(Constants.Animation.SelectedItem);
-		GD.Print("Hello there animation start!");
 	}
 
 	public virtual void StopAnimationInThoughtBubble()
 	{
 		_animationPlayer.Stop();
 	}
-	protected virtual void ExistInThoughtBubble()
-	{
-		
-	}
 
 	public void DebugMethodAnimation()
 	{
-		GD.Print("Why hello there!");
+		
 	}
 }

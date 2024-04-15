@@ -992,14 +992,14 @@ script = ExtResource("1_s7h38")
 _playerMovement = NodePath("Player")
 _masterSceneNode = NodePath(".")
 
+[node name="Player" parent="." instance=ExtResource("2_gsx2r")]
+position = Vector2(55, -17)
+
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(153, -76)
 zoom = Vector2(4.625, 4.625)
 script = ExtResource("1_fw2sh")
 player = NodePath("../Player")
-
-[node name="Player" parent="." instance=ExtResource("2_gsx2r")]
-position = Vector2(77, -25)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_nbm2d")
