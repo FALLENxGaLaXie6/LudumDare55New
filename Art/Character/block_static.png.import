@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db8gllynaml5q"
-path="res://.godot/imported/exit_goal_animated-Sheet.png-e979a3812839e5e1ffd0b0838f0e573c.ctex"
+uid="uid://bboib6rmgais8"
+path="res://.godot/imported/block_static.png-e42d0d54abcd87de70a81a2bd94e35dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Environment/exit_goal_animated-Sheet.png"
-dest_files=["res://.godot/imported/exit_goal_animated-Sheet.png-e979a3812839e5e1ffd0b0838f0e573c.ctex"]
+source_file="res://Art/Character/block_static.png"
+dest_files=["res://.godot/imported/block_static.png-e42d0d54abcd87de70a81a2bd94e35dd.ctex"]
 
 [params]
 

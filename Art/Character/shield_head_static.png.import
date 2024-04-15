@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db8gllynaml5q"
-path="res://.godot/imported/exit_goal_animated-Sheet.png-e979a3812839e5e1ffd0b0838f0e573c.ctex"
+uid="uid://dxohrto2f0f3w"
+path="res://.godot/imported/shield_head_static.png-4315458185fe896851b6272d6d6c702c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Environment/exit_goal_animated-Sheet.png"
-dest_files=["res://.godot/imported/exit_goal_animated-Sheet.png-e979a3812839e5e1ffd0b0838f0e573c.ctex"]
+source_file="res://Art/Character/shield_head_static.png"
+dest_files=["res://.godot/imported/shield_head_static.png-4315458185fe896851b6272d6d6c702c.ctex"]
 
 [params]
 
