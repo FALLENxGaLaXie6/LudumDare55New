@@ -1,7 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cwm3ciqwipvxa"]
+[gd_scene load_steps=16 format=3 uid="uid://cwm3ciqwipvxa"]
 
 [ext_resource type="Script" path="res://Scripts/Environment/SpawnableBlocks/WalkingSpawnableBlock.cs" id="1_cocc5"]
+[ext_resource type="PackedScene" uid="uid://b4xv6nssidm5j" path="res://Scenes/Blocks/SpawnableBlocks/Stationary_Spawnable_Block.tscn" id="2_tlhhn"]
 [ext_resource type="Texture2D" uid="uid://k6lvmei4qkie" path="res://Art/Character/walk_block-Sheet.png" id="2_veq2g"]
+[ext_resource type="Texture2D" uid="uid://cmiobsh4emj2y" path="res://Art/Environment/regular_block.png" id="3_s44wo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iain0"]
 atlas = ExtResource("2_veq2g")
@@ -134,7 +136,8 @@ _data = {
 position = Vector2(0, 4.98549)
 script = ExtResource("1_cocc5")
 _animationPlayer = NodePath("AnimatedSprite2D/AnimationPlayer")
-_blockPrefab = null
+_blockPrefab = ExtResource("2_tlhhn")
+_blockTexture = ExtResource("3_s44wo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 4

@@ -15,10 +15,38 @@ public partial class PlayerMovement : CharacterBody2D
 	[Export] private float _jumpTimeToPeek = 0.5f;
 	[Export] private float _jumpTimeToDescent = 0.4f;
 
+	//[Export] public Node2D[] BlockSpawnLocations { get; private set; }
+	public Vector2[] BlockSpawnLocations {get; private set;}
+	[Export] private float magicBlockLocationNumber = 24f;
+	
+	[Export] public BlockInventory _blockInventory;
+	
 	float JumpVelocity => ((2f * _jumpHeight) / _jumpTimeToPeek) * -1f;
 	float jumpGravity => ((-2f * _jumpHeight) / (_jumpTimeToPeek * _jumpTimeToPeek)) * -1f;
 	float fallGravity => ((-2f * _jumpHeight) / (_jumpTimeToDescent * _jumpTimeToDescent)) * -1f;
-	
+
+	public override void _Ready()
+	{
+		base._Ready();
+		BlockSpawnLocations = new Vector2[8];
+		//Up
+		BlockSpawnLocations[0] = new Vector2(0, -magicBlockLocationNumber);
+		//Right
+		BlockSpawnLocations[1] = new Vector2(magicBlockLocationNumber, 0);
+		//Down
+		BlockSpawnLocations[2] = new Vector2(0, magicBlockLocationNumber);
+        //Left
+        BlockSpawnLocations[3] = new Vector2(-magicBlockLocationNumber, 0);
+        //Up Right
+        BlockSpawnLocations[4] = new Vector2(magicBlockLocationNumber, -magicBlockLocationNumber);
+        //Down Right
+        BlockSpawnLocations[5] = new Vector2(magicBlockLocationNumber, magicBlockLocationNumber);
+        //Down Left
+        BlockSpawnLocations[6] = new Vector2(-magicBlockLocationNumber, magicBlockLocationNumber);
+        //Up Left
+        BlockSpawnLocations[7] = new Vector2(-magicBlockLocationNumber, -magicBlockLocationNumber);
+	}
+
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 newVeclocity = new Vector2(Velocity.X, Velocity.Y);

@@ -1013,7 +1013,8 @@ layer_1/tile_data = PackedInt32Array()
 
 [node name="Big Dude" parent="Background" instance=ExtResource("4_p54d5")]
 
-[node name="Block Summoning" parent="." instance=ExtResource("6_y7su2")]
+[node name="Block Summoning" parent="." node_paths=PackedStringArray("_playerMovement") instance=ExtResource("6_y7su2")]
+_playerMovement = NodePath("../Player")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true

@@ -344,7 +344,7 @@ _data = {
 "Walk": SubResource("Animation_5cico")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_playerAnimation", "_animatedSprite2D", "_summoningCloud", "_summoningCloudNode")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_playerAnimation", "_animatedSprite2D", "_summoningCloud", "_summoningCloudNode", "_blockInventory")]
 collision_mask = 2
 script = ExtResource("1_p2hra")
 _playerAnimation = NodePath("PlayerAnimationHandler")
@@ -355,6 +355,7 @@ _walkSpeed = 40.0
 _runSpeed = 80.0
 _jumpPower = 100.0
 _jumpHeight = 20.0
+_blockInventory = NodePath("SummoningCloudNode/SummoningCloudLogic/Block Inventory")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
@@ -369,7 +370,6 @@ z_index = 5
 scale = Vector2(0.996391, 0.995386)
 sprite_frames = SubResource("SpriteFrames_ljcur")
 animation = &"Idle"
-frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 root_node = NodePath("../..")
@@ -412,7 +412,7 @@ _blockInventory = NodePath("Block Inventory")
 
 [node name="Block Inventory" type="Node2D" parent="SummoningCloudNode/SummoningCloudLogic" node_paths=PackedStringArray("_blockInventorySpawnableBlocks", "_summoningCloudNode")]
 script = ExtResource("8_kov54")
-_blockInventoryItemPrefabs = Array[PackedScene]([ExtResource("8_waijo")])
+_blockInventoryItemPrefabs = Array[PackedScene]([ExtResource("8_waijo"), ExtResource("9_xdqph"), ExtResource("10_16gbq")])
 _blockInventorySpawnableBlocks = [NodePath("../../SummoningCloud/StationarySpawnableBlock"), NodePath("../../SummoningCloud/WalkingSpawnableBlock"), NodePath("../../SummoningCloud/ShieldSpawnableBlock")]
 _summoningCloudNode = NodePath("../../SummoningCloud")
 
@@ -423,6 +423,7 @@ position = Vector2(-21, -16)
 position = Vector2(21, -16)
 
 [node name="BlockSpawnLocations" type="Node2D" parent="."]
+visible = false
 
 [node name="Right" type="Node2D" parent="BlockSpawnLocations"]
 position = Vector2(24, 0)

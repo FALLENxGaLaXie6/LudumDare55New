@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://cj0rns0l0sffq"]
+[gd_scene load_steps=18 format=3 uid="uid://cj0rns0l0sffq"]
 
 [ext_resource type="Script" path="res://Scripts/Environment/SpawnableBlocks/ShieldSpawnableBlock.cs" id="1_wtqyy"]
+[ext_resource type="Texture2D" uid="uid://dxohrto2f0f3w" path="res://Art/Character/shield_head_static.png" id="2_qhykq"]
 [ext_resource type="Texture2D" uid="uid://coa1yr7ex2n3q" path="res://Art/Character/shield_head-Sheet.png" id="3_jhorx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xw6dm"]
@@ -167,6 +168,7 @@ _data = {
 script = ExtResource("1_wtqyy")
 _animationPlayer = NodePath("AnimatedSprite2D/AnimationPlayer")
 _blockPrefab = null
+_blockTexture = ExtResource("2_qhykq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 4
