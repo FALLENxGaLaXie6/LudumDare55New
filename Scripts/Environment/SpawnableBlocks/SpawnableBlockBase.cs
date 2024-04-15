@@ -4,8 +4,8 @@ using System;
 public abstract partial class SpawnableBlockBase : Node2D
 {
 	[Export] private float _thoughtBubbleAnimationSpeed = 1f;
-	[Export] private AnimationPlayer _animationPlayer;
-	[Export] private PackedScene _blockPrefab;
+	[Export] protected AnimationPlayer _animationPlayer;
+	[Export] public PackedScene _blockPrefab { get; private set; }
 	[Export] public Texture2D _blockTexture;
 	
 	public override void _Ready()

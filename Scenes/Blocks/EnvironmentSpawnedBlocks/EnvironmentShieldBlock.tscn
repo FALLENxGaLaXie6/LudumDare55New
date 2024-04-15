@@ -1,44 +1,42 @@
-[gd_scene load_steps=19 format=3 uid="uid://cj0rns0l0sffq"]
+[gd_scene load_steps=18 format=3 uid="uid://cx7fvtrtqmdgn"]
 
-[ext_resource type="Script" path="res://Scripts/Environment/SpawnableBlocks/ShieldSpawnableBlock.cs" id="1_wtqyy"]
-[ext_resource type="Texture2D" uid="uid://dxohrto2f0f3w" path="res://Art/Character/shield_head_static.png" id="2_qhykq"]
-[ext_resource type="PackedScene" uid="uid://cx7fvtrtqmdgn" path="res://Scenes/Blocks/EnvironmentSpawnedBlocks/EnvironmentShieldBlock.tscn" id="2_s2b7s"]
-[ext_resource type="Texture2D" uid="uid://coa1yr7ex2n3q" path="res://Art/Character/shield_head-Sheet.png" id="3_jhorx"]
+[ext_resource type="Script" path="res://Scripts/Environment/SpawnableBlocks/ShieldSpawnableBlock.cs" id="1_odjcg"]
+[ext_resource type="Texture2D" uid="uid://coa1yr7ex2n3q" path="res://Art/Character/shield_head-Sheet.png" id="4_n5psm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xw6dm"]
-atlas = ExtResource("3_jhorx")
+atlas = ExtResource("4_n5psm")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p1l66"]
-atlas = ExtResource("3_jhorx")
+atlas = ExtResource("4_n5psm")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fbmro"]
-atlas = ExtResource("3_jhorx")
+atlas = ExtResource("4_n5psm")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sl3wd"]
-atlas = ExtResource("3_jhorx")
+atlas = ExtResource("4_n5psm")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8a4v"]
-atlas = ExtResource("3_jhorx")
+atlas = ExtResource("4_n5psm")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qy8ae"]
-atlas = ExtResource("3_jhorx")
+atlas = ExtResource("4_n5psm")
 region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5yme7"]
-atlas = ExtResource("3_jhorx")
+atlas = ExtResource("4_n5psm")
 region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vra11"]
-atlas = ExtResource("3_jhorx")
+atlas = ExtResource("4_n5psm")
 region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ioy1"]
-atlas = ExtResource("3_jhorx")
+atlas = ExtResource("4_n5psm")
 region = Rect2(128, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g344p"]
@@ -165,11 +163,14 @@ _data = {
 "SelectedItem": SubResource("Animation_3hufe")
 }
 
-[node name="ShieldSpawnableBlock" type="Node2D" node_paths=PackedStringArray("_animationPlayer")]
-script = ExtResource("1_wtqyy")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oolyn"]
+size = Vector2(11.095, 10.25)
+
+[node name="ShieldSpawnableBlock" type="RigidBody2D" node_paths=PackedStringArray("_animationPlayer")]
+collision_layer = 6
+collision_mask = 7
+script = ExtResource("1_odjcg")
 _animationPlayer = NodePath("AnimatedSprite2D/AnimationPlayer")
-_blockPrefab = ExtResource("2_s2b7s")
-_blockTexture = ExtResource("2_qhykq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 4
@@ -181,3 +182,6 @@ animation = &"Idle"
 libraries = {
 "": SubResource("AnimationLibrary_jabcj")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oolyn")

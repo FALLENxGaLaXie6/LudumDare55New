@@ -35,7 +35,8 @@ public partial class BlockInventory : Node2D
 
 	public void SpawnCurrentSelectedInventoryItem(Vector2 position, Node2D parent)
 	{
-		Node2D instance = (Node2D)_blockInventoryItemPrefabs[CurrentSelectedInventoryItem].Instantiate();
+		//Node2D instance = (Node2D)_blockInventoryItemPrefabs[CurrentSelectedInventoryItem].Instantiate();
+		Node2D instance = (Node2D)_blockInventorySpawnableBlocks[CurrentSelectedInventoryItem]._blockPrefab.Instantiate();
 		instance.GlobalPosition = new Vector2(position.X, position.Y);
 		parent.AddChild(instance);
 	}

@@ -1,31 +1,30 @@
-[gd_scene load_steps=13 format=3 uid="uid://b4xv6nssidm5j"]
+[gd_scene load_steps=13 format=3 uid="uid://clfwdd3jh65cy"]
 
-[ext_resource type="Texture2D" uid="uid://cmiobsh4emj2y" path="res://Art/Environment/regular_block.png" id="1_4gpsb"]
-[ext_resource type="Script" path="res://Scripts/Environment/SpawnableBlocks/StationarySpawnableBlock.cs" id="1_7f4mk"]
-[ext_resource type="Texture2D" uid="uid://qwqy0qpkuuxb" path="res://Art/Character/block_idle-Sheet.png" id="2_kba5i"]
-[ext_resource type="PackedScene" uid="uid://clfwdd3jh65cy" path="res://Scenes/Blocks/EnvironmentSpawnedBlocks/EnvironmentStationaryBlock.tscn" id="2_ks1lm"]
+[ext_resource type="Script" path="res://Scripts/Environment/SpawnableBlocks/StationarySpawnableBlock.cs" id="1_7hukf"]
+[ext_resource type="Texture2D" uid="uid://cmiobsh4emj2y" path="res://Art/Environment/regular_block.png" id="3_vbsqq"]
+[ext_resource type="Texture2D" uid="uid://qwqy0qpkuuxb" path="res://Art/Character/block_idle-Sheet.png" id="4_x26iy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_or6ms"]
-atlas = ExtResource("2_kba5i")
+atlas = ExtResource("4_x26iy")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xx018"]
-atlas = ExtResource("2_kba5i")
+atlas = ExtResource("4_x26iy")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_722eh"]
-atlas = ExtResource("2_kba5i")
+atlas = ExtResource("4_x26iy")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xey7"]
-atlas = ExtResource("2_kba5i")
+atlas = ExtResource("4_x26iy")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g344p"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_4gpsb")
+"texture": ExtResource("3_vbsqq")
 }],
 "loop": false,
 "name": &"Idle",
@@ -135,11 +134,14 @@ _data = {
 "SelectedItem": SubResource("Animation_2jeu0")
 }
 
-[node name="StationarySpawnableBlock" type="Node2D" node_paths=PackedStringArray("_animationPlayer")]
-script = ExtResource("1_7f4mk")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hj511"]
+size = Vector2(10.54, 10)
+
+[node name="EnvironmentStationarySpawnableBlock" type="RigidBody2D" node_paths=PackedStringArray("_animationPlayer")]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_7hukf")
 _animationPlayer = NodePath("AnimatedSprite2D/AnimationPlayer")
-_blockPrefab = ExtResource("2_ks1lm")
-_blockTexture = ExtResource("1_4gpsb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 4
@@ -151,3 +153,6 @@ animation = &"Idle"
 libraries = {
 "": SubResource("AnimationLibrary_jabcj")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hj511")
