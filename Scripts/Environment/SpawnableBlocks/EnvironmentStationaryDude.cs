@@ -1,18 +1,25 @@
 using Godot;
-using System;
 
-public abstract partial class SpawnableBlockBase : Node2D
+public partial class EnvironmentStationaryDude : CharacterBody2D
 {
 	[Export] private float _thoughtBubbleAnimationSpeed = 1f;
 	[Export] protected AnimationPlayer _animationPlayer;
-	[Export] public PackedScene _blockPrefab { get; private set; }
-	[Export] public Texture2D _blockTexture;
 	
-	[Export] public RigidBody2D RigidBody2D { get; private set; }
+	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	
 	public override void _Ready()
 	{
 		StartAnimationInThoughtBubble();
+	}
+
+	public override void _PhysicsProcess(double delta)
+	{
+		Vector2 velocity = Velocity;
+
+		// Add the gravity.
+		velocity.Y += Gravity * (float)delta;
+		Velocity = velocity;
+		MoveAndSlide();
 	}
 
 	public virtual void Spawn(Vector2 position)

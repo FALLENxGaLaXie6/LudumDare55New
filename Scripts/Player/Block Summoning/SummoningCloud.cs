@@ -17,7 +17,7 @@ public partial class SummoningCloud : Node
 	[Export] private float _summoningCloudGrowSpeed = 5f;
 	[Export] private BlockInventory _blockInventory;
 
-	public static bool SummoningCloudActive { get; set; } = false;
+	public static bool SummoningCloudActive { get; private set; } = false;
 
 	public override void _Ready()
 	{

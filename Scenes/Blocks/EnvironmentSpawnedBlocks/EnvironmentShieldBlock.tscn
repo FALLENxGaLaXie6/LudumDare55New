@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://cx7fvtrtqmdgn"]
 
-[ext_resource type="Script" path="res://Scripts/Environment/SpawnableBlocks/ShieldSpawnableBlock.cs" id="1_odjcg"]
+[ext_resource type="Script" path="res://Scripts/Environment/SpawnableBlocks/EnvironmentShieldDude.cs" id="1_bojki"]
 [ext_resource type="Texture2D" uid="uid://coa1yr7ex2n3q" path="res://Art/Character/shield_head-Sheet.png" id="4_n5psm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xw6dm"]
@@ -166,10 +166,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oolyn"]
 size = Vector2(11.095, 10.25)
 
-[node name="ShieldSpawnableBlock" type="RigidBody2D" node_paths=PackedStringArray("_animationPlayer")]
+[node name="EnvironmentShieldBlock" type="CharacterBody2D" node_paths=PackedStringArray("_animationPlayer")]
 collision_layer = 6
 collision_mask = 7
-script = ExtResource("1_odjcg")
+floor_max_angle = 0.0872665
+platform_floor_layers = 0
+script = ExtResource("1_bojki")
 _animationPlayer = NodePath("AnimatedSprite2D/AnimationPlayer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

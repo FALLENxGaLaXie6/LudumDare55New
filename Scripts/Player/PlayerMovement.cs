@@ -102,40 +102,59 @@ public partial class PlayerMovement : CharacterBody2D
 	{
 		if (IsOnFloor())
 		{
-			if (horizontalDirection == 0 && !SummoningCloud.SummoningCloudActive) _playerAnimation.PlayAnimation(Constants.Animation.Idle);
-			else if (!SummoningCloud.SummoningCloudActive)
-			{
+			//If we're not moving and summoning cloud is not up
+			if (horizontalDirection == 0 && !SummoningCloud.SummoningCloudActive)
+				_playerAnimation.PlayAnimation(Constants.Animation.Idle);
+			else if (horizontalDirection == 0 && SummoningCloud.SummoningCloudActive)
+				_playerAnimation.PlayAnimation(Constants.Animation.Think);
+			else //handle either moving with or without a summoning cloud up
 				HandleMovementAnimations();
-			}
 
 			if (horizontalDirection != 0 && SummoningCloud.SummoningCloudActive)
 			{
-				SummoningCloud.SummoningCloudActive = false;
-				HandleMovementAnimations();
-				_summoningCloud.ActivateSummoningCloud(false);
+				//_summoningCloud.ActivateSummoningCloud(false);
+				//HandleMovementAnimations();
 			}
 		}
 		else
 		{
 			if (Velocity.Y < 0)
 			{
+				/*
+				if (SummoningCloud.SummoningCloudActive)
+					_playerAnimation.PlayAnimation(Constants.Animation.Think);
+				else
+					_playerAnimation.PlayAnimation(Constants.Animation.Jump);
+					*/
 				_playerAnimation.PlayAnimation(Constants.Animation.Jump);
 			}
 			else
 			{
+				_playerAnimation.PlayAnimation(Constants.Animation.Fall);
 				//TODO: replace with fall animation
-				_playerAnimation.PlayAnimation(Constants.Animation.Jump);
+				/*if (Velocity.Y < 0)
+				{
+					if (SummoningCloud.SummoningCloudActive)
+						_playerAnimation.PlayAnimation(Constants.Animation.Think);
+					else
+						_playerAnimation.PlayAnimation(Constants.Animation.Fall);
+				}
+				*/
 			}
-			_summoningCloud.ActivateSummoningCloud(false);
+			//_summoningCloud.ActivateSummoningCloud(false);
 		}
 	}
 
 	private void HandleMovementAnimations()
 	{
-		if (Input.IsActionPressed(Constants.Input.Run))
+		if (Input.IsActionPressed(Constants.Input.Run) && !SummoningCloud.SummoningCloudActive)
 			_playerAnimation.PlayAnimation(Constants.Animation.Run, 2f);
-		else
+		else if (Input.IsActionPressed(Constants.Input.Run) && SummoningCloud.SummoningCloudActive)
+			_playerAnimation.PlayAnimation(Constants.Animation.SummoningCloudRun, 2f);
+		else if (!SummoningCloud.SummoningCloudActive)
 			_playerAnimation.PlayAnimation(Constants.Animation.Walk);
+		else
+			_playerAnimation.PlayAnimation(Constants.Animation.SummoningCloudWalk);
 	}
 
 	public void ReassignBubbleParent(Node2D nodeParent) => _summoningCloudNode.Reparent(nodeParent);

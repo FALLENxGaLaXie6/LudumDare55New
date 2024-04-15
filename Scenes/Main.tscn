@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/Camera/CameraFollow.cs" id="1_fw2sh"]
 [ext_resource type="Script" path="res://Scripts/Main.cs" id="1_s7h38"]
 [ext_resource type="Texture2D" uid="uid://dvao2tmofbwy7" path="res://Test Stuff/tilemap1.png" id="1_xwe0u"]
-[ext_resource type="PackedScene" uid="uid://cb44ju8x525wn" path="res://Scenes/Player.tscn" id="2_gsx2r"]
+[ext_resource type="PackedScene" uid="uid://cb44ju8x525wn" path="res://Scenes/Characters/Player.tscn" id="2_gsx2r"]
 [ext_resource type="Texture2D" uid="uid://cv1h6rhixjtkh" path="res://Art/Environment/tile_map.png" id="2_ouvim"]
-[ext_resource type="PackedScene" uid="uid://dtyha20refwht" path="res://Scenes/big_dude.tscn" id="4_p54d5"]
+[ext_resource type="PackedScene" uid="uid://dtyha20refwht" path="res://Scenes/Characters/big_dude.tscn" id="4_p54d5"]
 [ext_resource type="PackedScene" uid="uid://b2ds6bbdufr81" path="res://Scenes/Blocks/BlockSummoning.tscn" id="6_y7su2"]
 [ext_resource type="AudioStream" uid="uid://ccgssiygyyxe3" path="res://Audio/Music/Secrets.mp3" id="8_j0r5o"]
 

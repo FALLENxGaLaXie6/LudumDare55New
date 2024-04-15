@@ -1,10 +1,12 @@
-[gd_scene load_steps=44 format=3 uid="uid://cb44ju8x525wn"]
+[gd_scene load_steps=57 format=3 uid="uid://cb44ju8x525wn"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.cs" id="1_p2hra"]
 [ext_resource type="Texture2D" uid="uid://cgd7s5lusfkht" path="res://Art/Character/blockhead_idle-Sheet.png" id="2_qftnk"]
+[ext_resource type="Texture2D" uid="uid://cxetq3geyhyq8" path="res://Art/Character/blockhead_damage.png" id="3_g0i73"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAnimation.cs" id="3_j6tys"]
 [ext_resource type="Texture2D" uid="uid://c5ip6ml3g7hqi" path="res://Art/Character/blockhead_jump-Sheet.png" id="5_4hnrx"]
 [ext_resource type="Texture2D" uid="uid://btf1nckd0mhy8" path="res://Art/Character/blockhead_walk-Sheet.png" id="5_8s6y2"]
+[ext_resource type="Texture2D" uid="uid://dwqrkhyo7bttu" path="res://Art/Character/blockhead_walk_thinking-Sheet.png" id="5_kb8aj"]
 [ext_resource type="Texture2D" uid="uid://dy77tm7uccqmd" path="res://Art/Character/blockhead_thinking-Sheet.png" id="5_vq5ht"]
 [ext_resource type="Texture2D" uid="uid://bovkkspc2u006" path="res://Art/Environment/pixel-speech-bubble.png" id="6_bwwdn"]
 [ext_resource type="Script" path="res://Scripts/Player/Block Summoning/SummoningCloud.cs" id="7_xjel3"]
@@ -13,9 +15,18 @@
 [ext_resource type="PackedScene" uid="uid://cwm3ciqwipvxa" path="res://Scenes/Blocks/SpawnableBlocks/Walking_Spawnable_Block.tscn" id="9_xdqph"]
 [ext_resource type="PackedScene" uid="uid://cj0rns0l0sffq" path="res://Scenes/Blocks/SpawnableBlocks/ShieldHeadSpawnableBlock.tscn" id="10_16gbq"]
 [ext_resource type="Texture2D" uid="uid://cmiobsh4emj2y" path="res://Art/Environment/regular_block.png" id="13_ffytx"]
+[ext_resource type="Script" path="res://Scripts/Player/SlingShotController.cs" id="16_2dpf7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isue1"]
 size = Vector2(18, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ohpt"]
+atlas = ExtResource("3_g0i73")
+region = Rect2(0, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxgg0"]
+atlas = ExtResource("3_g0i73")
+region = Rect2(0, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ns0y"]
 atlas = ExtResource("2_qftnk")
@@ -61,6 +72,22 @@ region = Rect2(180, 0, 20, 16)
 atlas = ExtResource("5_4hnrx")
 region = Rect2(0, 0, 20, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kw2b"]
+atlas = ExtResource("5_kb8aj")
+region = Rect2(0, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0kph"]
+atlas = ExtResource("5_kb8aj")
+region = Rect2(20, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41ddm"]
+atlas = ExtResource("5_kb8aj")
+region = Rect2(40, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yv66"]
+atlas = ExtResource("5_kb8aj")
+region = Rect2(60, 0, 20, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5ybk"]
 atlas = ExtResource("5_vq5ht")
 region = Rect2(0, 0, 20, 16)
@@ -105,6 +132,22 @@ region = Rect2(60, 0, 20, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_6ohpt")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxgg0")
+}],
+"loop": false,
+"name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8ns0y")
 }, {
 "duration": 1.0,
@@ -144,6 +187,23 @@ animations = [{
 }],
 "loop": false,
 "name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kw2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0kph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41ddm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yv66")
+}],
+"loop": false,
+"name": &"SummoningCloudWalk",
 "speed": 5.0
 }, {
 "frames": [{
@@ -250,6 +310,7 @@ length = 0.001
 [sub_resource type="Animation" id="Animation_r3e8a"]
 resource_name = "Run"
 length = 0.40001
+loop_mode = 1
 step = 0.025
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -334,12 +395,132 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_bgy6w"]
+resource_name = "SummoningCloudWalk"
+length = 0.40001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"SummoningCloudWalk"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_nwp2w"]
+resource_name = "SummoningCloudRun"
+length = 0.40001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"SummoningCloudWalk"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_aw2tu"]
+resource_name = "Fall"
+length = 0.10001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Fall"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ybanv"]
+resource_name = "Death"
+length = 0.10001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7s157"]
 _data = {
+"Death": SubResource("Animation_ybanv"),
+"Fall": SubResource("Animation_aw2tu"),
 "Idle": SubResource("Animation_a3un6"),
 "Jump": SubResource("Animation_khhun"),
 "RESET": SubResource("Animation_a47l3"),
 "Run": SubResource("Animation_r3e8a"),
+"SummoningCloudRun": SubResource("Animation_nwp2w"),
+"SummoningCloudWalk": SubResource("Animation_bgy6w"),
 "Think": SubResource("Animation_vm654"),
 "Walk": SubResource("Animation_5cico")
 }
@@ -369,7 +550,7 @@ _animationPlayer = NodePath("../AnimatedSprite2D/AnimationPlayer")
 z_index = 5
 scale = Vector2(0.996391, 0.995386)
 sprite_frames = SubResource("SpriteFrames_ljcur")
-animation = &"Idle"
+animation = &"Death"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 root_node = NodePath("../..")
@@ -410,11 +591,12 @@ _playerNode = NodePath("../..")
 _summoningCloudGrowSpeed = 10.0
 _blockInventory = NodePath("Block Inventory")
 
-[node name="Block Inventory" type="Node2D" parent="SummoningCloudNode/SummoningCloudLogic" node_paths=PackedStringArray("_blockInventorySpawnableBlocks", "_summoningCloudNode")]
+[node name="Block Inventory" type="Node2D" parent="SummoningCloudNode/SummoningCloudLogic" node_paths=PackedStringArray("_blockInventorySpawnableBlocks", "_summoningCloudNode", "spawnPosition")]
 script = ExtResource("8_kov54")
 _blockInventoryItemPrefabs = Array[PackedScene]([ExtResource("8_waijo"), ExtResource("9_xdqph"), ExtResource("10_16gbq")])
 _blockInventorySpawnableBlocks = [NodePath("../../SummoningCloud/StationarySpawnableBlock"), NodePath("../../SummoningCloud/WalkingSpawnableBlock"), NodePath("../../SummoningCloud/ShieldSpawnableBlock")]
 _summoningCloudNode = NodePath("../../SummoningCloud")
+spawnPosition = NodePath("../../../BlockSpawnPosition")
 
 [node name="SummoningCloudPositionAnchorLeft" type="Node2D" parent="."]
 position = Vector2(-21, -16)
@@ -472,3 +654,20 @@ position = Vector2(24, 24)
 
 [node name="Sprite2D" type="Sprite2D" parent="BlockSpawnLocations/Down Right"]
 texture = ExtResource("13_ffytx")
+
+[node name="SlingshotController" type="Node2D" parent="." node_paths=PackedStringArray("slingshotLine")]
+script = ExtResource("16_2dpf7")
+flingForce = 10.0
+maxforce = 400.0
+slingshotLine = NodePath("../SlingshotLine")
+
+[node name="BlockSpawnPosition" type="Node2D" parent="."]
+position = Vector2(0, -8)
+
+[node name="SlingshotLine" type="Line2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+points = PackedVector2Array(0, 0, 0, -4.535)
+width = 1.71
+default_color = Color(0.580392, 0.12549, 0, 1)
+sharp_limit = 5.81

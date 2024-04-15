@@ -22,6 +22,7 @@ public partial class BlockSummoning : Node2D
 	{
 		SetPreviewSpriteAlpha(0.2f);
 		_animationPlayer.Play(Constants.Animation.TweenBlock, -1D, _previewSpriteScaleAnimationSpeed);
+		SlingShotController.SpawnBlockWithForceDirection += SpawnBlockWithForceDirection;
 	}
 
 	private void SetPreviewSpriteAlpha(float alpha) => previewSprite.Modulate = new Color(1, 1, 1, alpha);
@@ -46,11 +47,20 @@ public partial class BlockSummoning : Node2D
 			._blockInventorySpawnableBlocks[_playerMovement._blockInventory.CurrentSelectedInventoryItem]._blockTexture;
 		previewSprite.Visible = SummoningCloud.SummoningCloudActive;
 		// Check if the player wants to place a block
+		
+		/*
 		if (Input.IsActionJustPressed(Constants.Input.PlaceBlock) && SummoningCloud.SummoningCloudActive)
 		{
 			_playerMovement._blockInventory.SpawnCurrentSelectedInventoryItem(gridPosition, this);
 		}
+		*/
 	}
+	
+	private void SpawnBlockWithForceDirection(Vector2 direction, float maxMagnitude)
+	{
+		_playerMovement._blockInventory.SpawnCurrentSelectedInventoryItem(_playerMovement._blockInventory.spawnPosition.GlobalPosition, this, direction, maxMagnitude);
+	}
+
 
 	private Vector2 GetClosestBlockSpawnLocation(Vector2 mousePosition)
 	{

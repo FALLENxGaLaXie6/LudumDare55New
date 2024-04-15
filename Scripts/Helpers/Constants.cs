@@ -11,6 +11,10 @@ public class Constants
         public static readonly StringName TweenBlock = new ("TweenBlock");
         public static readonly StringName Run = new ("Run");
         public static readonly StringName SelectedItem = new ("SelectedItem");
+        public static readonly StringName SummoningCloudWalk = new ("SummoningCloudWalk");
+        public static readonly StringName SummoningCloudRun = new ("SummoningCloudRun");
+        public static readonly StringName Fall = new ("Fall");
+        public static readonly StringName Death = new ("Death");
     }
     
     public static class Input
