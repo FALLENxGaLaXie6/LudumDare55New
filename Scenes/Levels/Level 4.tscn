@@ -68,5 +68,6 @@ _playerMovement = NodePath("../Player")
 position = Vector2(-88, 28)
 
 [node name="AudioListener2D" parent="." instance=ExtResource("7_lqed4")]
+current = false
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("8_647jq")]
