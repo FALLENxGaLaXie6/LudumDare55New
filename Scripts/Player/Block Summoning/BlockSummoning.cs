@@ -25,6 +25,12 @@ public partial class BlockSummoning : Node2D
 		SlingShotController.SpawnBlockWithForceDirection += SpawnBlockWithForceDirection;
 	}
 
+
+	public override void _ExitTree()
+	{
+		SlingShotController.SpawnBlockWithForceDirection -= SpawnBlockWithForceDirection;
+	}
+
 	private void SetPreviewSpriteAlpha(float alpha) => previewSprite.Modulate = new Color(1, 1, 1, alpha);
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
