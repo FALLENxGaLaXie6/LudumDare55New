@@ -7,11 +7,6 @@ public partial class EnvironmentStationaryDude : CharacterBody2D
 	
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	
-	public override void _Ready()
-	{
-		StartAnimationInThoughtBubble();
-	}
-
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
@@ -21,6 +16,13 @@ public partial class EnvironmentStationaryDude : CharacterBody2D
 		Velocity = velocity;
 		MoveAndSlide();
 	}
+	
+	public override void _Ready()
+	{
+		StartAnimationInThoughtBubble();
+	}
+
+	
 
 	public virtual void Spawn(Vector2 position)
 	{

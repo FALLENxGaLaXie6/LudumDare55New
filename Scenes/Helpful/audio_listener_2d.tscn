@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cs0gyd0witq01"]
+
+[node name="AudioListener2D" type="AudioListener2D"]
+current = true

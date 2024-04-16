@@ -665,7 +665,6 @@ slingshotLine = NodePath("../SlingshotLine")
 position = Vector2(0, -8)
 
 [node name="SlingshotLine" type="Line2D" parent="."]
-visible = false
 position = Vector2(0, -8)
 points = PackedVector2Array(0, 0, 0, -4.535)
 width = 1.71

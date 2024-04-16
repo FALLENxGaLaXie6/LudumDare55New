@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bupkwfh216dvp"]
+[gd_scene load_steps=6 format=3 uid="uid://bupkwfh216dvp"]
 
 [ext_resource type="Texture2D" uid="uid://cv1h6rhixjtkh" path="res://Art/Environment/tile_map.png" id="1_05l03"]
+[ext_resource type="Script" path="res://Scripts/Main.cs" id="1_k5tfx"]
+[ext_resource type="PackedScene" uid="uid://cb44ju8x525wn" path="res://Scenes/Helpful/Player.tscn" id="3_ntrqs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q70xm"]
 texture = ExtResource("1_05l03")
@@ -24,14 +26,19 @@ texture = ExtResource("1_05l03")
 1:2/0 = 0
 1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:2/0/physics_layer_0/angular_velocity = 0.0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-15.7145, -16.5563, 16.5563, -15.9951, 16.2757, 14.8726, -16.8369, 15.7145)
 
 [sub_resource type="TileSet" id="TileSet_ngvgf"]
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 7
 sources/0 = SubResource("TileSetAtlasSource_q70xm")
 
-[node name="Level1" type="Node2D"]
+[node name="Level1" type="Node2D" node_paths=PackedStringArray("_playerMovement", "_masterSceneNode")]
+script = ExtResource("1_k5tfx")
+_playerMovement = NodePath("Player")
+_masterSceneNode = NodePath(".")
+
+[node name="Player" parent="." instance=ExtResource("3_ntrqs")]
+position = Vector2(-121, 60)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(7, 8)
