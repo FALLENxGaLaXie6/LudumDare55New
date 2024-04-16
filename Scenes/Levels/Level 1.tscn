@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bupkwfh216dvp"]
+[gd_scene load_steps=13 format=3 uid="uid://bupkwfh216dvp"]
 
 [ext_resource type="Texture2D" uid="uid://cv1h6rhixjtkh" path="res://Art/Environment/tile_map.png" id="1_05l03"]
 [ext_resource type="Script" path="res://Scripts/Main.cs" id="1_k5tfx"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dtyha20refwht" path="res://Scenes/Helpful/big_dude.tscn" id="6_kpsjs"]
 [ext_resource type="PackedScene" uid="uid://cs0gyd0witq01" path="res://Scenes/Helpful/audio_listener_2d.tscn" id="7_i0blv"]
 [ext_resource type="PackedScene" uid="uid://hul0722iuqo" path="res://Scenes/Helpful/audio_stream_player.tscn" id="8_tm47a"]
+[ext_resource type="PackedScene" uid="uid://yelnu0cy2xo0" path="res://Scenes/Helpful/load_level_portal.tscn" id="9_qe8je"]
+[ext_resource type="PackedScene" uid="uid://bh4eh8rcesk5l" path="res://Scenes/Levels/Level 2.tscn" id="10_pccpv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q70xm"]
 texture = ExtResource("1_05l03")
@@ -71,3 +73,7 @@ position = Vector2(-207, 79)
 position = Vector2(4, 6)
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("8_tm47a")]
+
+[node name="LoadLevelPortal" parent="." instance=ExtResource("9_qe8je")]
+position = Vector2(144, 9)
+nextPackedLevelScene = ExtResource("10_pccpv")

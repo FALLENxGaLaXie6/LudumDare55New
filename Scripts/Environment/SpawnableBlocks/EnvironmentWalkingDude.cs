@@ -18,6 +18,11 @@ public partial class EnvironmentWalkingDude : CharacterBody2D
 		StartAnimationInThoughtBubble();
 	}
 
+	public override void _ExitTree()
+	{
+		wallDetectionArea.BodyEntered -= WallDetectionArea_BodyEntered;
+	}
+
 	private void WallDetectionArea_BodyEntered(Node2D body)
 	{
 		GD.Print("Body entered!!!!!");

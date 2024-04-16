@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://yelnu0cy2xo0"]
+
+[ext_resource type="Script" path="res://Scripts/Environment/LevelLoader.cs" id="1_p834g"]
+[ext_resource type="PackedScene" uid="uid://bupkwfh216dvp" path="res://Scenes/Levels/Level 1.tscn" id="2_754ui"]
+[ext_resource type="Texture2D" uid="uid://db8gllynaml5q" path="res://Art/Environment/exit_goal_animated-Sheet.png" id="3_bsw1n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fagpp"]
+size = Vector2(16.88, 16.48)
+
+[node name="LoadLevelPortal" type="Node2D" node_paths=PackedStringArray("portalArea2D")]
+position = Vector2(301.58, -24.3872)
+script = ExtResource("1_p834g")
+nextPackedLevelScene = ExtResource("2_754ui")
+portalArea2D = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_bsw1n")
+hframes = 4
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-8.00003, 8.21622)
+shape = SubResource("RectangleShape2D_fagpp")

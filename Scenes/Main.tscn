@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://yj28gt3r8lwu"]
+[gd_scene load_steps=14 format=3 uid="uid://yj28gt3r8lwu"]
 
 [ext_resource type="Script" path="res://Scripts/Main.cs" id="1_s7h38"]
 [ext_resource type="Texture2D" uid="uid://dvao2tmofbwy7" path="res://Test Stuff/tilemap1.png" id="1_xwe0u"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b2ds6bbdufr81" path="res://Scenes/Helpful/BlockSummoning.tscn" id="6_y7su2"]
 [ext_resource type="PackedScene" uid="uid://cs0gyd0witq01" path="res://Scenes/Helpful/audio_listener_2d.tscn" id="8_5ojnt"]
 [ext_resource type="PackedScene" uid="uid://hul0722iuqo" path="res://Scenes/Helpful/audio_stream_player.tscn" id="8_fb40e"]
+[ext_resource type="PackedScene" uid="uid://yelnu0cy2xo0" path="res://Scenes/Helpful/load_level_portal.tscn" id="10_ne0sv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5y7cu"]
 texture = ExtResource("1_xwe0u")
@@ -1662,3 +1663,5 @@ _playerMovement = NodePath("../Player")
 [node name="AudioListener2D" parent="." instance=ExtResource("8_5ojnt")]
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("8_fb40e")]
+
+[node name="LoadLevelPortal" parent="." instance=ExtResource("10_ne0sv")]
